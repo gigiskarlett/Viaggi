@@ -12,11 +12,11 @@ main {
 }
   
 .landing {
-    background: url('././backround.png');
+    background: url('https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 1000px;
+    height: 900px;
 }
 
 h1, .catchy-phrase {
@@ -25,12 +25,12 @@ h1, .catchy-phrase {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 80px;
     margin: 0px;
 }
 
 #catchy-phrase-container{
-    padding: 60px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -38,10 +38,116 @@ h1 {
     font-size: 40px;
 }
 
+#cta {
+    font-size: 40px;
+    color: white;
+}
 
-  @media screen and (max-width: 600px){
+/*form*/
+
+#signup-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+
+.container {
+margin: auto;
+flex-wrap: wrap;
+padding-bottom: 30px;
+}
+
+input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: block;
+    background: #f1f1f1;
+    text-align: center;
+    font-size: 15px;
+}
+  
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input, .sign-up-btn {
+    width: 475px;
+    height: 50px;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+    display: block;
+}
+  
+  /* Set a style for the submit/register button */
+  .sign-up-btn {
+    background-color: white;
+    color: black;
+    font-weight: bolder;
+    font-size: 25px;
+    margin: 8px 0;
+    cursor: pointer;
+  }
+  
+  .sign-up-btn:hover {
+    opacity:1;
+  }
+  
+  /* Add a blue text color to links */
+  a, p {
+    color: white;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+legend{
+    text-align: center;
+ }
+
+fieldset {
+    border: none;
+}
+
+ #container-login {
+    text-align: center;
+ }
+
+@media screen and (max-width: 600px){
     main {
       flex-direction: column;
     }
+    
+  input, .sign-up-btn {
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+    display: block;
   }
+    .catchy-phrase {
+        font-size: 25px;
+    }
+    h1 {
+        font-size: 50px;
+    }
+    #cta {
+        font-size: 30px;
+    }
+    .landing {
+        height: auto;
+    }
+
+    #catchy-phrase-container {
+        padding: 30px;
+    }
+
+    #container-login {
+        margin-bottom: 30px;
+    }
+
+    .sign-up-btn {
+        font-size: 20px;
+    }
+}
 

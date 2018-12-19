@@ -1,20 +1,47 @@
-body {
+* {
+    box-sizing: border-box;
     font-family: 'PT Sans', sans-serif;
-    padding: 0;
     margin: 0;
-  }
+}
+
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 210px;
+}
   
-  .landing {
-      background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 1000px;
+.landing {
+    background: url('././backround.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 1000px;
+}
+
+h1, .catchy-phrase {
+    color: white; 
+    text-align: center;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 0px;
+}
+
+#catchy-phrase-container{
+    padding: 60px;
+    text-align: center;
+}
+
+.catchy-phrase {
+    font-size: 40px;
+}
+
+
+  @media screen and (max-width: 600px){
+    main {
+      flex-direction: column;
+    }
   }
 
-  h1 {
-      font-size: 70px;
-      margin: 0px;
-      color: white;
-      text-align: center
-  }

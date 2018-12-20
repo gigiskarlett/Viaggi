@@ -4,46 +4,32 @@
     margin: 0;
 }
 
-
 main {
     display: flex;
     flex-wrap: wrap;
-    min-width: 210px;
+    min-width: 300px;
 }
-  
-.landing {
-    background: url('https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-    background-repeat: no-repeat;
+
+body {
+    background-image: url(https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1260);
     background-size: cover;
     width: 100%;
-    height: 900px;
+    height: auto;
 }
 
-h1, .catchy-phrase {
-    color: white; 
-    text-align: center;
-}
-
-h1 {
-    font-size: 80px;
-    margin: 0px;
-}
-
-#catchy-phrase-container{
-    padding: 50px;
-    text-align: center;
-}
-
-.catchy-phrase {
-    font-size: 40px;
-}
-
-#cta {
-    font-size: 40px;
+a, p {
     color: white;
 }
 
-/*form*/
+fieldset {
+    border: none;
+}
+
+.container {
+    margin: auto;
+    flex-wrap: wrap;
+ }
+    
 
 #signup-form{
     display: flex;
@@ -51,73 +37,19 @@ h1 {
     flex-direction: column; 
 }
 
-.container {
-margin: auto;
-flex-wrap: wrap;
-padding-bottom: 30px;
-}
-
-input[type=text], input[type=password] {
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: block;
-    background: #f1f1f1;
+ #container-login {
     text-align: center;
-    font-size: 15px;
-}
-  
+ }
+legend{
+    text-align: center;
+ }
+      
 input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
 
 input, .sign-up-btn {
-    width: 475px;
-    height: 50px;
-    border-radius: 12px;
-    text-align: center;
-    border: none;
-    display: block;
-}
-  
-  /* Set a style for the submit/register button */
-  .sign-up-btn {
-    background-color: white;
-    color: black;
-    font-weight: bolder;
-    font-size: 25px;
-    margin: 8px 0;
-    cursor: pointer;
-  }
-  
-  .sign-up-btn:hover {
-    opacity:1;
-  }
-  
-  /* Add a blue text color to links */
-  a, p {
-    color: white;
-  }
-  
-  /* Set a grey background color and center the text of the "sign in" section */
-legend{
-    text-align: center;
- }
-
-fieldset {
-    border: none;
-}
-
- #container-login {
-    text-align: center;
- }
-
-@media screen and (max-width: 600px){
-    main {
-      flex-direction: column;
-    }
-    
-  input, .sign-up-btn {
     width: 200px;
     height: 40px;
     border-radius: 12px;
@@ -125,29 +57,96 @@ fieldset {
     border: none;
     display: block;
   }
-    .catchy-phrase {
-        font-size: 25px;
-    }
-    h1 {
-        font-size: 50px;
-    }
-    #cta {
-        font-size: 30px;
-    }
-    .landing {
-        height: auto;
-    }
 
-    #catchy-phrase-container {
-        padding: 30px;
-    }
+main {
+    flex-direction: column;
+  }
 
-    #container-login {
-        margin-bottom: 30px;
-    }
-
-    .sign-up-btn {
-        font-size: 20px;
-    }
+  input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    background: #f1f1f1;
+    font-size: 15px;
 }
 
+  .catchy-phrase {
+      font-size: 25px;
+  }
+  h1 {
+    font-size: 50px;
+    padding: 5px;
+  }
+
+#cta {
+    font-size: 30px;
+}
+  
+  .landing {
+      height: auto;
+  }
+
+  #catchy-phrase-container {
+      padding: 30px;
+  }
+
+  #container-login {
+      margin-bottom: 30px;
+  }
+
+  .sign-up-btn {
+      font-size: 20px;
+  }
+
+  h1, .catchy-phrase {
+    color: white; 
+    text-align: center;
+}
+
+#catchy-phrase-container{
+    padding: 25px;
+    text-align: center;
+}
+
+#signup-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+
+@media (min-width: 700px) {      
+    body{
+        background: url('https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1300&w=1260');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    h1 {
+        font-size: 80px;
+    }
+    
+    #catchy-phrase-container{
+        padding: 50px;
+    }
+    
+    .catchy-phrase {
+        font-size: 40px;
+    }
+    
+    #cta {
+        font-size: 40px;
+    }
+    
+    .container {
+    padding-bottom: 30px;
+    }
+
+    .sign-up-btn:hover {
+        opacity:1;
+    }
+
+    input, .sign-up-btn {
+        width: 450px;
+        height: 50px;
+    }
+      
+}

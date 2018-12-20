@@ -2,19 +2,96 @@ body {
     font-family: 'PT Sans', sans-serif;
     padding: 0;
     margin: 0;
-  }
-  
-  .landing {
-      background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 800px;
-  }
+}
 
-  h1 {
-      font-size: 70px;
-      margin: 0px;
-      color: white;
-      text-align: center
-  }
+main {
+    flex-direction: column;
+}
+  
+.landing {
+    background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=900");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 50px;
+    padding: 5px;
+    margin: 0;
+}
+
+a, p {
+    color: white;
+}
+
+.catchy-phrase {
+    font-size: 20px;
+}
+
+h1, .catchy-phrase {
+    color: white; 
+    text-align: center;
+}
+
+#button-container {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+    margin: 10px;
+    background-color: white;
+    font-weight: bold;
+}
+
+
+@media (min-width: 650px) {      
+    h1 {
+        font-size: 80px;
+    }
+
+    .landing {
+        height: 800px;
+        background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=800");
+    }
+    
+    #catchy-phrase-container{
+        padding: 50px;
+    }
+    
+    .catchy-phrase {
+        font-size: 40px;
+    }
+
+    .sign-up-btn, .login-btn {
+        width: 300px;
+        height: 50px;
+    }
+
+    #button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .login-btn {
+        padding-right: 15px;
+        margin-right: 20px;
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+    
+}

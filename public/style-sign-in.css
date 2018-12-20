@@ -100,11 +100,6 @@ h1, .catchy-phrase {
     text-align: center;
 }
 
-#catchy-phrase-container{
-    padding: 25px;
-    text-align: center;
-}
-
 #login-form{
     display: flex;
     flex-wrap: wrap;

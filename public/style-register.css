@@ -56,11 +56,11 @@ input, .sign-up-btn {
     text-align: center;
     border: none;
     display: block;
-  }
+}
 
 main {
     flex-direction: column;
-  }
+}
 
   input[type=text], input[type=password] {
     padding: 15px;
@@ -69,31 +69,32 @@ main {
     font-size: 15px;
 }
 
-  .catchy-phrase {
-      font-size: 25px;
-  }
-  h1 {
-    font-size: 50px;
-    padding: 5px;
-  }
+.catchy-phrase {
+    font-size: 25px;
+}
+
+h1 {
+font-size: 50px;
+padding: 5px;
+}
 
 #cta {
     font-size: 30px;
 }
 
-  #catchy-phrase-container {
-      padding: 30px;
-  }
+#catchy-phrase-container {
+    padding: 30px;
+}
 
-  #container-login {
-      margin-bottom: 30px;
-  }
+#container-login {
+    margin-bottom: 30px;
+}
 
-  .sign-up-btn {
-      font-size: 20px;
-  }
+.sign-up-btn {
+    font-size: 20px;
+}
 
-  h1, .catchy-phrase {
+h1, .catchy-phrase {
     color: white; 
     text-align: center;
 }

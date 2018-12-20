@@ -7,9 +7,10 @@ body {
 main {
     flex-direction: column;
 }
-  
+/***********************header*************************/  
 .landing {
-    background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=900");
+
+    background: url("https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -25,10 +26,6 @@ h1 {
     margin: 0;
 }
 
-a, p {
-    color: white;
-}
-
 .catchy-phrase {
     font-size: 20px;
 }
@@ -37,6 +34,11 @@ h1, .catchy-phrase {
     color: white; 
     text-align: center;
 }
+
+#catchy-phrase-container{
+    padding: 20px;
+}
+
 
 #button-container {
     flex-wrap: wrap;
@@ -55,16 +57,74 @@ h1, .catchy-phrase {
     background-color: white;
     font-weight: bold;
 }
+/************************************************/  
+
+/*********************about us***************************/  
+p {
+    font-size: 16px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#about-us {
+    padding: 5px;
+}
+
+#we-are {
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+
+}
+
+/************************************************/  
+
+/*********************what we do***************************/  
+
+#what-we-do-container {
+    display: flex;  
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.what-we-do {
+    padding: 10px;
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 10px;
+    width: 200px;
+    border-bottom: dotted black;
+}
+
+.what-we-do .image {
+    height: 150px;
+    width: 100%;
+    background: url("././honeymoon.png")
+}
+
+h3 {
+    display: block;
+}
+
+ 
+
+/************************************************/  
 
 
 @media (min-width: 650px) {      
+    /***********************header*************************/  
     h1 {
         font-size: 80px;
     }
 
     .landing {
-        height: 800px;
-        background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=800");
+        height: 600px;
+        background: url("https://images.pexels.com/photos/443430/pexels-photo-443430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
     }
     
     #catchy-phrase-container{
@@ -93,5 +153,41 @@ h1, .catchy-phrase {
     .btn {
         font-size: 20px;
     }
+    /************************************************/  
+
+    /*********************about us***************************/  
+    h2 {
+        font-size: 40px;
+    }
+
+    #we-are {
+        font-size: 30px;
+        padding: 20px;
+    }
+
+     /************************************************/  
+
+    /*********************what we do***************************/  
+    h3 {
+        display: block;
+        text-align: center;
+    }
+
+    .what-we-do {
+        border: none;
+    }
+    
+    #what-we-do-container {
+        border-bottom: dotted black;
+    }
+
+
+
+
+
+
+
+    /************************************************/  
+
     
 }

@@ -1,20 +1,150 @@
-body {
+* {
+    box-sizing: border-box;
     font-family: 'PT Sans', sans-serif;
-    padding: 0;
     margin: 0;
-  }
-  
-  .landing {
-      background: url("https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 1000px;
-  }
+}
 
-  h1 {
-      font-size: 70px;
-      margin: 0px;
-      color: white;
-      text-align: center
-  }
+main {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 300px;
+}
+
+body {
+    background-image: url(https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1260);
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
+a, p {
+    color: white;
+}
+
+fieldset {
+    border: none;
+}
+
+.container {
+    margin: auto;
+    flex-wrap: wrap;
+ }
+    
+
+#login-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+
+#container-signup {
+    text-align: center;
+ }
+
+legend{
+    text-align: center;
+    }
+      
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input, .login-btn {
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+    display: block;
+}
+
+main {
+    flex-direction: column;
+}
+
+input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    background: #f1f1f1;
+    font-size: 15px;
+}
+
+.catchy-phrase {
+    font-size: 25px;
+}
+
+h1 {
+font-size: 50px;
+padding: 5px;
+}
+
+#cta {
+    font-size: 30px;
+}
+
+#catchy-phrase-container {
+    padding: 30px;
+}
+
+#container-signup {
+    margin-bottom: 30px;
+}
+
+.login-btn {
+    font-size: 20px;
+}
+
+h1, .catchy-phrase {
+    color: white; 
+    text-align: center;
+}
+
+#catchy-phrase-container{
+    padding: 25px;
+    text-align: center;
+}
+
+#login-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+
+@media (min-width: 700px) {      
+    body{
+        background: url('https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1300&w=1260');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    h1 {
+        font-size: 80px;
+    }
+    
+    #catchy-phrase-container{
+        padding: 50px;
+    }
+    
+    .catchy-phrase {
+        font-size: 40px;
+    }
+    
+    #cta {
+        font-size: 40px;
+    }
+    
+    .container {
+    padding-bottom: 30px;
+    }
+
+    .login-btn:hover {
+        opacity:1;
+    }
+
+    input, .login-btn {
+        width: 450px;
+        height: 50px;
+    }
+      
+}

@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Welcome back!</title>
+        <title>Welcome back!</title>
 
-    <!--responsive viewport tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--responsive viewport tag-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--Metadata-->
-    <meta name="Viaggi" content="organize your travel and let us countdown the days for you">
+        <!--Metadata-->
+        <meta name="Viaggi" content="organize your travel and let us countdown the days for you">
 
-    <!--Stylesheets-->
-    <link rel="stylesheet" type="text/css" media="screen" href="../public/style-sign-in.css" />
+        <!--Stylesheets-->
+        <link rel="stylesheet" type="text/css" media="screen" href="../public/style-sign-in.css" />
 
-    <!--Google font-->
-</head>
+        <!--Google font-->
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    </head>
 
-<body>
-    <main role="main" aria-live="polite">
-        <section class="landing">
+    <body>
+        <main role="main" aria-live="polite">
+            
             <header role="heading">
                 <h1>VIAGGI</h1>
             </header>
-        </section>
 
+            <div id="catchy-phrase-container">
+                <p class="catchy-phrase">Organize your travel and countdown</p>
+                <p class="catchy-phrase">for it in just one app</p>
+            </div>
 
+            
+            <form id="login-form" action="/login/" method ="post">
+                <div class="container">
+                    <fieldset>
+                        <legend><p id="cta">LOG IN</p></legend>
+                        <br>
 
+                        <label for="username"></label>
+                        <input type="text" placeholder="username" name="username" required>
+    
+                        <label for="password"></label>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+        
+                        <button type="submit" class="login-btn">Log in</button>
+                    </fieldset>    
 
+                    <div id="container-signup">
+                        <p>Don't have an account yet?</p> 
+                        <p id="signup"><a href="#"</a>Sign Up</a></p>
+                    </div>
+                </div>
+            </form>
 
+        </main>
 
-
-    </main>
-
-    <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="client.js"></script>
-</body>
-
+        <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="client.js"></script>
+        
+    </body>
 </html>

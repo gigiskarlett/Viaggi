@@ -21,22 +21,39 @@
 </head>
 
 <body>
+    <nav>
+        <h1>VIAGGI</h1>
+
+        <a href="#">My Trips</a>
+        <a href="#">My Account</a>
+        <a href="#">Sign Out</a>
+    </nav>
+
     <main role="main" aria-live="polite">
+        <h2>My Account</h2>
+        <div id="delete-container">
+            <form id="delete-account-form" action="/delete/" method ="post">
+                <fieldset>
+                    <legend><p id="cta">Delete Account</p></legend>
+                    <br>
 
-        <nav>
-            <h1>VIAGGI</h1>
-
-            <a href="#">My Trips</a>
-            <a href="#">My Account</a>
-            <a href="#">Sign Out</a>
-        </nav>
+                    <label for="username"></label>
+                    <input type="text" placeholder="username" name="username" required>
                 
+                    <label for="password"></label>
+                    <input type="password" placeholder="Password" name="full-name" required>
+                
+                    <label for="password-confirm"></label>
+                    <input type="password" placeholder="Confirm Password" name="password-confirm" required>
+                
+
+                    <button type="submit" class="del-btn">Good-bye dear friend 💔</button>
+                </fieldset>    
+
+            </form>
         
-
-
-
-
-
+        </div>
+                
     </main>
 
     <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>

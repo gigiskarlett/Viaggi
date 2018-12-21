@@ -7,7 +7,6 @@
 main {
     display: flex;
     flex-wrap: wrap;
-    min-width: 300px;
 }
 
 body {
@@ -30,13 +29,9 @@ nav {
 }
 
 nav a {
-    padding-top: 3%;
+    padding-top: 2%;
     padding-right: 10px;
     text-decoration: none;
-}
-
-a:last-child {
-    margin-right: 13px;
 }
 
 
@@ -44,18 +39,26 @@ h1, nav a {
     color: white;
 }
 
-
-
-
-
 @media screen and (max-width: 600px){
     main, nav {
         flex-direction: column;
     }
 }
 
-
 @media (min-width: 700px) {   
 
+    a:last-child {
+        margin-right: 13px;
+    }
+
+    nav a {
+        padding-left: 1px;
+        padding-bottom: 0;
+    }
+
+    h1 {
+        left: 120px;
+        position: relative;
+    }
 }
 

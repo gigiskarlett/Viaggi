@@ -7,7 +7,6 @@
 main {
     display: flex;
     flex-wrap: wrap;
-    min-width: 300px;
 }
 
 body {
@@ -114,7 +113,8 @@ h1, .catchy-phrase {
 
 @media (min-width: 700px) {      
     body{
-        background: url('https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1300&w=1260');
+       /* background: url('https://images.pexels.com/photos/221455/pexels-photo-221455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1300&w=1260');*/
+       background-color: black;
         background-repeat: no-repeat;
         background-size: cover;
     }

@@ -7,7 +7,8 @@
 main {
     display: flex;
     flex-wrap: wrap;
-    min-width: 300px;
+    flex-direction: column;
+    margin-top: 10px;
 }
 
 body {
@@ -22,6 +23,13 @@ h1 {
     font-size: 50px;
 }
 
+h2 {
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    margin-bottom: 4%;
+}
+
 nav {
     display: flex;
     background-color: black;
@@ -30,13 +38,9 @@ nav {
 }
 
 nav a {
-    padding-top: 3%;
+    padding: 2%;
     padding-right: 10px;
     text-decoration: none;
-}
-
-a:last-child {
-    margin-right: 13px;
 }
 
 
@@ -44,8 +48,59 @@ h1, nav a {
     color: white;
 }
 
+#delete-container {
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+#delete-account-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+
+legend{
+    text-align: center;
+}
 
 
+fieldset {
+    border: none;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+input, .del-btn {
+    width: 240px;
+    height: 45px;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+    display: block;
+}
+
+input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    background: #f1f1f1;
+    font-size: 15px;
+}
+
+#cta {
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+}
+
+.del-btn {
+    background-color: white;
+    font-size: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 
 
 @media screen and (max-width: 600px){
@@ -56,6 +111,36 @@ h1, nav a {
 
 
 @media (min-width: 700px) {   
+    #cta {
+        font-size: 35px;
+    }
+    
+    input, .del-btn {
+        width: 450px;
+        height: 50px;
+    }
+
+    main {
+        margin-top: 40px;
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    a:last-child {
+        margin-right: 13px;
+    }
+
+    nav a {
+        padding-left: 1px;
+        padding-bottom: 0;
+    }
+
+    h1 {
+        left: 120px;
+        position: relative;
+    }
 
 }
 

@@ -45,8 +45,38 @@ h1, nav a {
     color: white;
 }
 
+h2 {
+    font-weight: bolder;
+}
+
+#create-btn {
+    width: 70px;
+    height: 70px;
+    color: white;
+    font-weight: bold;
+    font-size:  13px;
+    border-radius: 50%;
+    background-color: #F3A33A;
+    border: none;
+    order: -1;
+}
+
+#button-container {
+    flex-wrap: wrap;
+    padding-left: 4%;
+    padding-top: 4%;
+}
+
+#container {
+    padding: 50px;
+    order: 2;
+    width: 70%;
+
+}
+
+
 @media screen and (max-width: 600px){
-    main, nav {
+     nav {
         flex-direction: column;
     }
 }
@@ -55,6 +85,7 @@ h1, nav a {
 
     a:last-child {
         margin-right: 13px;
+        padding-bottom: 0;
     }
 
     nav a {
@@ -65,6 +96,33 @@ h1, nav a {
     h1 {
         left: 120px;
         position: relative;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+
+    #create-btn {
+        width: 90px;
+        height: 90px;
+        font-size: 15px;
+    }
+
+    #button-container {
+    padding: 5%;
+    }
+
+
+    #create-btn {
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+    }
+
+    #container {
+        padding: 50px;
+        width: 70%;
     }
 }
 

@@ -28,6 +28,12 @@ nav {
     align-items: center;
 }
 
+
+a:last-child {
+    padding-bottom: 10px;
+}
+
+
 nav a {
     padding-top: 2%;
     padding-right: 10px;

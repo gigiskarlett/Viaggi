@@ -102,11 +102,30 @@ h2 {
 .image {
     height: 150px;
     width: 100%;
-    background: url("././honeymoon.png")
 }
 
 h3 {
     display: block;
+}
+
+.first {
+    background: url("././air-freight.png");
+    background-repeat: no-repeat;
+}
+
+.second {
+    background: url("././calendar.png");
+    background-repeat: no-repeat;
+}
+
+.third {
+    background: url("././countdown\ \(1\).png");
+    background-repeat: no-repeat;
+}
+
+.fourth {
+    background: url("././idea.png");  
+    background-repeat: no-repeat;
 }
 
 
@@ -116,11 +135,28 @@ h3 {
     display: flex;  
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-bottom: 10px;
     
 }
 
 .coming-soon {
     border:none;
+}
+
+.coming-soon-first {
+    background: url("././mobile-sync.png");
+    background-repeat: no-repeat;
+}
+
+.coming-soon-second {
+    background: url("././sun.svg");
+    background-repeat: no-repeat;
+}
+
+.coming-soon-third {
+    background: url("././share.png");
+    background-repeat: no-repeat;
+
 }
 
 
@@ -132,7 +168,7 @@ h3 {
 
     .landing {
         height: 600px;
-        background: url("https://images.pexels.com/photos/443430/pexels-photo-443430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background: linear-gradient(rgba(0, 0, 0, -0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/443430/pexels-photo-443430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
         background-size: cover;
     }
     

@@ -56,13 +56,14 @@ h1, .catchy-phrase {
     margin: 10px;
     background-color: white;
     font-weight: bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-/************************************************/  
 
 /*********************about us***************************/  
 p {
     font-size: 16px;
     text-align: center;
+    margin: 0;
 }
 
 h2 {
@@ -70,7 +71,7 @@ h2 {
     text-align: center;
 }
 
-#about-us {
+#about-us, #coming-soon-tile {
     padding: 5px;
 }
 
@@ -81,8 +82,6 @@ h2 {
 
 }
 
-/************************************************/  
-
 /*********************what we do***************************/  
 
 #what-we-do-container {
@@ -91,7 +90,7 @@ h2 {
     justify-content: space-around;
 }
 
-.what-we-do {
+.what-we-do, .coming-soon {
     padding: 10px;
     font-family: sans-serif;
     text-align: center;
@@ -100,7 +99,7 @@ h2 {
     border-bottom: dotted black;
 }
 
-.what-we-do .image {
+.image {
     height: 150px;
     width: 100%;
     background: url("././honeymoon.png")
@@ -110,9 +109,19 @@ h3 {
     display: block;
 }
 
- 
 
-/************************************************/  
+/*******************coming soon*****************************/  
+
+#coming-soon-container {
+    display: flex;  
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.coming-soon {
+    border:none;
+}
 
 
 @media (min-width: 650px) {      
@@ -153,7 +162,6 @@ h3 {
     .btn {
         font-size: 20px;
     }
-    /************************************************/  
 
     /*********************about us***************************/  
     h2 {
@@ -165,7 +173,6 @@ h3 {
         padding: 20px;
     }
 
-     /************************************************/  
 
     /*********************what we do***************************/  
     h3 {

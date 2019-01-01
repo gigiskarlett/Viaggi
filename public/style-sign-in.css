@@ -31,7 +31,7 @@ fieldset {
  }
     
 
-#login-form{
+.login-form{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column; 
@@ -101,7 +101,7 @@ h1, .catchy-phrase {
     text-align: center;
 }
 
-#login-form{
+.login-form{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column; 

@@ -92,6 +92,7 @@ h2 {
 
     a:last-child {
         margin-right: 13px;
+        padding-bottom: 0;
     }
 
     nav a {

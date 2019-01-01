@@ -49,7 +49,7 @@ h2 {
     font-weight: bolder;
 }
 
-#create-btn {
+.create-btn {
     width: 70px;
     height: 70px;
     color: white;
@@ -67,7 +67,7 @@ h2 {
     padding-top: 4%;
 }
 
-#container {
+.container {
     padding: 50px;
     order: 2;
     width: 70%;
@@ -102,25 +102,17 @@ h2 {
         text-align: center;
     }
 
-
-    #create-btn {
+    #button-container {
+    padding: 5%;
+    }
+    
+    .create-btn {
         width: 90px;
         height: 90px;
         font-size: 15px;
     }
 
-    #button-container {
-    padding: 5%;
-    }
-
-
-    #create-btn {
-        width: 100px;
-        height: 100px;
-        font-size: 20px;
-    }
-
-    #container {
+    .container {
         padding: 50px;
         width: 70%;
     }

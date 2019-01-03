@@ -108,22 +108,22 @@ h3 {
 }
 
 .first {
-    background: url("././images/air-freight.png");
+    background: url("../images/air-freight.png");
     background-repeat: no-repeat;
 }
 
 .second {
-    background: url("././images/calendar.png");
+    background: url("../images/calendar.png");
     background-repeat: no-repeat;
 }
 
 .third {
-    background: url("././images/countdown\ \(1\).png");
+    background: url("../images/countdown\ \(1\).png");
     background-repeat: no-repeat;
 }
 
 .fourth {
-    background: url("././images/idea.png");  
+    background: url("../images/idea.png");  
     background-repeat: no-repeat;
 }
 
@@ -143,17 +143,17 @@ h3 {
 }
 
 .coming-soon-first {
-    background: url("././images/mobile-sync.png");
+    background: url("../images/mobile-sync.png");
     background-repeat: no-repeat;
 }
 
 .coming-soon-second {
-    background: url("././images/sun.svg");
+    background: url("../images/sun.svg");
     background-repeat: no-repeat;
 }
 
 .coming-soon-third {
-    background: url("././images/share.png");
+    background: url("../images/share.png");
     background-repeat: no-repeat;
 
 }

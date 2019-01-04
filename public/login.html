@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Welcome back!</title>
+
+        <!--responsive viewport tag-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Metadata-->
+        <meta name="Viaggi" content="organize your travel and let us countdown the days for you">
+
+        
+        <!--Google font-->
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+        
+        <!--Stylesheets-->
+        <link rel="stylesheet" type="text/css" media="screen" href="../public/css/style-sign-in.css" />
+
+        </head>
+
+    <body>
+        <main role="main" aria-live="polite">
+            
+            <header role="heading">
+                <h1>VIAGGI</h1>
+            </header>
+
+            <div id="catchy-phrase-container">
+                <p class="catchy-phrase">Easily organize your travel plans all in one place...</p>
+                <p class="catchy-phrase">and we'll count down the days for you!</p>
+            </div>
+
+            <div class="container">
+
+                <form class="login-form js-login-form" action="/login/" method ="post">
+
+                    <fieldset>
+                        <legend><p id="cta">LOG IN</p></legend>
+                        <br>
+
+                        <label for="username"></label>
+                        <input type="text" placeholder="username" name="username" required>
+    
+                        <label for="password"></label>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+        
+                        <button type="submit" class="login-btn js-login-button">Log in</button>
+                    </fieldset>    
+
+                    <div id="container-signup">
+                        <p>Don't have an account yet?</p> 
+                        <p id="signup"><a href="#">Sign Up</a></p>
+                    </div>
+                    
+                </form>
+            </div>
+
+        </main>
+
+        <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="client.js"></script>
+        
+    </body>
+</html>

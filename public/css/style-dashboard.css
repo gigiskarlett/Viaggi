@@ -97,7 +97,11 @@ fieldset {
     width: 80%;
     margin: auto;
     margin-bottom: 20px;
+    position: fixed;
+    left: 10%;
+    top: 30%;
 }
+
 
 .entry-modal {
     display: flex;
@@ -223,6 +227,8 @@ legend {
 
     .modal-container {
         width: 30%;
+        left: 35%;
+        top: 30%;
     }
     
 

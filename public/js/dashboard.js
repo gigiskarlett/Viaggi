@@ -12,20 +12,23 @@
   });
 })();
 
-//opens modal to add trip
-function openModal() {
+//opens modal to add entry
+(function addEntry() {
+  $('#button-container').on('click', '.js-create-button', function() {
+  $('.js-modal-container').show();
+  });
+})();
 
-}
 
-//closes modal
-function closeModal() {
+//closes modal when user clicks cancel
+(function closeModal() {
+  $('.js-entry-modal').on('click', '.js-cancel-button', function() {
+    confirm("Are you sure you want to close without submitting your trip?");
+    $('.js-modal-container').hide();
+  })
+})();
 
-}
 
-//adds trip
-function addEntry() {
-
-}
 
 //edits trip
 function editEntry() {

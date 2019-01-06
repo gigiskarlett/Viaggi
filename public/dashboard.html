@@ -47,6 +47,30 @@
             <div class="popup-content"></div>
         </section>
     
+        <form class="entry-modal js-entry-modal" aria-live="polite" >
+            <fieldset>
+                <legend>
+                  <span class="modal-title">Add Trip</span>
+                  <span class="edit-modal-title hidden"></span>
+                  <span id="modal-entry-id" class="hidden"></span>
+                </legend>
+
+                <label for="Destination">Destination</label>
+                <input class="entry-input" placeholder="Where will you be going?" type="text" id="destination-field" name="Destination" required />
+
+                <label for="When?">When?</label>
+                <input class="date input" placeholder="First day of trip" type="date" id="When-field" name="When?" required/>
+
+                <label for="Last day of trip?">Last day of trip?</label>
+                <input class= "date input" placeholder="Last day of trip" type="date" id="last-day-field" name="Last day of trip?" required/>
+
+                <label for="Trip Details">Trip Details</label>
+                <textarea id="description-field" placeholder="Write details about your trip..." name="Trip Details" rows="4"> </textarea>
+
+                <button type="button" class="submit-button js-submit-button" role="button">ADD TRIP</button>
+                <button type="button" class="cancel-button js-cancel-button" role="button">Cancel</button>
+            </fieldset>
+        </form>
             
 
 

@@ -67,13 +67,104 @@ h2 {
     padding-top: 4%;
 }
 
-.container {
+ /* .container {
     padding: 50px;
     order: 2;
     width: 70%;
 
+}  */
+
+.entry-modal {
+    background-color: #FAFAFA;
+    border-radius: 10px;
 }
 
+fieldset {
+    text-align: center;
+    border: none;
+}
+
+.entry-input, label,  #description-field {
+    display: block;
+    width: 100%;
+}
+
+.entry-input, .date {
+    height: 20px;
+}
+
+.modal-container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.entry-modal {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+
+.submit-button, .cancel-button {
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.submit-button {
+    display: block;
+    background-color: #3498DB;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    border: none;
+    font-weight: 700;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.date {
+    width: 100%;
+    text-align: center;
+}
+
+.submit-button:hover {
+    background-color: darken(#3498DB, 10%);
+    cursor: pointer;
+}
+
+.cancel-button {
+    border: none;
+    margin-top: 10px;
+    background-color: #FAFAFA;
+}
+
+input, textarea {
+    background-color: white;
+    border: 1px solid gainsboro;
+    margin-top: 3px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 0;
+}
+
+
+label {
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+#date-container {
+    display: flex;
+    flex-direction: column;
+}
+
+legend {
+    padding: 5px;
+}
 
 @media screen and (max-width: 600px){
      nav {
@@ -81,7 +172,7 @@ h2 {
     }
 }
 
-@media (min-width: 700px) {   
+@media (min-width: 780px) {   
 
     a:last-child {
         margin-right: 13px;
@@ -115,6 +206,59 @@ h2 {
     .container {
         padding: 50px;
         width: 70%;
+    }
+
+    .entry-modal {
+        background-color: white;
+    }
+
+    fieldset {
+        text-align: center;
+        border: none;
+    }
+
+    .entry-input, .date {
+        height: 30px;
+    }
+
+    .modal-container {
+        width: 30%;
+    }
+    
+
+    .submit-button, .cancel-button {
+        margin-top: 5px;
+    }
+
+
+    .submit-button {
+        height: 40px;
+        border-radius: 20px;
+        line-height: 36px;
+        font-size: 0.875em;
+        font-weight: 700;
+        padding: 0 34px;
+        margin: 0 auto;
+    }
+
+    input, textarea {
+        margin-top: 8px;
+        border-radius: 3px;
+        margin-bottom: 20px;
+    }
+
+    legend {
+        padding: 10px;
+    }
+
+    label {
+        text-align: left;
+    }
+
+    #date-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: inherit;
     }
 }
 

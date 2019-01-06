@@ -61,6 +61,12 @@ h2 {
     order: -1;
 }
 
+.create-btn:active {
+    background-color: #F3A33A;
+    box-shadow: 0 5px rgb(0, 62, 112);
+    transform: translateY(4px);
+  }
+
 #button-container {
     flex-wrap: wrap;
     padding-left: 4%;
@@ -139,6 +145,8 @@ fieldset {
     background-color: darken(#3498DB, 10%);
     cursor: pointer;
 }
+
+
 
 .cancel-button {
     border: none;

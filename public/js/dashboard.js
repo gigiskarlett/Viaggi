@@ -13,7 +13,7 @@
 })();
 
 //opens modal to add entry
-(function addEntry() {
+(function openEntryModal() {
   $('#button-container').on('click', '.js-create-button', function() {
   $('.js-modal-container').show();
   });
@@ -28,6 +28,23 @@
   })
 })();
 
+const postTrip = (newTripEntry) => {
+  fetch('/trips',
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+    },
+    method: "POST",
+    body: JSON.stringify(newTripEntry)
+  })
+  .then(response => {
+    fetchTrips();
+    return response.json()
+  })
+  .catch(error => console.log('Bad request'));
+}
 
 
 //edits trip

@@ -5,22 +5,11 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-mongoose.Promise = global.Promise;
-
-const { DATABASE_URL, PORT } = require('./config');
-
-const { TripPost} = require('./models');
+const {TripPost} = require('./models');
 
 const jsonParser = bodyParser.json();
 
-const app = express();
-
-//logging 
-app.use(morgan('common'));
-
-app.use(express.json());
-
-app.use(express.static("public"));
+const app = express.Router();
 
 
 // how to set this up?
@@ -30,7 +19,7 @@ app.use(express.static("public"));
 //   });
 // });
 
-app.get('/trips', (req, res) => {
+app.get('/', (req, res) => {
     TripPost
     .find()
     .then(trips => {
@@ -42,7 +31,7 @@ app.get('/trips', (req, res) => {
     });
 });
 
-app.post('/trips', (req, res) => {
+app.post('/', jsonParser, (req, res) => {
     const requiredFields = ['destination', 'when', 'lastDayOfTrip'];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
@@ -69,40 +58,36 @@ app.post('/trips', (req, res) => {
 });
 
 
-app.delete('/trips/:id', (req, res) => {
-    TripPost.delete(req.params.id);
-    console.log(`Deleted Trip \`${req.params.ID}\``);
-    res.status(204).end();
+app.delete('/:id', (req, res) => {
+    TripPost
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      console.log(`Deleted blog post with id \`${req.params.id}\``);
+      res.status(204).end();
+    });
 });
 
 
-app.put('/trips/:id', jsonParser, (req, res) => {
-    const requiredFields = ['destination', 'when', 'lastDayOfTrip'];
-    for (let i=0; i<requiredFields.length; i++) {
-        const field = requiredFields[i];
-        if (!(field in req.body)) {
-        const message = `Missing \`${field}\` in request body`
-        console.error(message);
-        return res.status(400).send(message);
-        }
+app.put('/:id', jsonParser, (req, res) => {
+    if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        res.status(400).json({
+          error: 'Request path id and request body id values must match'
+        });
     }
     
-    if (req.params.id !== req.body.id) {
-        const message = `Request path id (${req.params.id}) and request body id (${req.body.id}) must match`;
-        console.error(message);
-        return res.status(400).send(message);
-    }
-    console.log(`Updating shopping list item \`${req.params.id}\``);
-
+    const updated = {};
+    const updateableFields = ['destination', 'when', 'lastDayOfTrip', 'tripDetails'];
+    updateableFields.forEach(field => {
+        if (field in req.body) {
+          updated[field] = req.body[field];
+        }
+    });
+    
     TripPost
-    .update({
-        id: req.params.id,
-        destination: req.body.destination,
-        when: req.body.when,
-        lastDayOfTrip: req.body.lastDayOfTrip
-    })
-    .catch( err => res.status(500).json({ message: 'Something went wrong'}));
-    res.status(204).end();
+        .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
+        .then(TripPost => res.status(204).end())
+        .catch(err => res.status(500).json({ message: 'Something went wrong' }));
+        res.status(204).end();
 }); 
 
 app.use('*', function (req, res) {
@@ -111,4 +96,4 @@ app.use('*', function (req, res) {
 
 
 
-module.exports = TripPost;
+module.exports = app;

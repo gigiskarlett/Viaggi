@@ -73,13 +73,6 @@ h2 {
     padding-top: 4%;
 }
 
- /* .container {
-    padding: 50px;
-    order: 2;
-    width: 70%;
-
-}  */
-
 .entry-modal {
     background-color: #FAFAFA;
     border-radius: 10px;
@@ -115,7 +108,7 @@ fieldset {
     flex-direction: column; 
 }
 
-.submit-button, .cancel-button {
+.submit-button, .delete-button, .cancel-button {
     display: block;
     margin: auto;
     margin-top: 5px;
@@ -148,10 +141,16 @@ fieldset {
 
 
 
-.cancel-button {
+.cancel-button, 
+#edit-button  {
     border: none;
     margin-top: 10px;
-    background-color: #FAFAFA;
+    background-color: white;
+}
+
+#edit-button {
+    margin-top: 0;
+    
 }
 
 input, textarea {
@@ -176,6 +175,25 @@ label {
 
 legend {
     padding: 5px;
+}
+
+#details-box {
+    text-align: center;
+}
+
+#date-label {
+    padding-bottom: 10px;
+}
+
+#details-label {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#date-label, #details-label {
+    font-weight: bold;
 }
 
 @media screen and (max-width: 600px){
@@ -273,6 +291,18 @@ legend {
         display: flex;
         justify-content: space-between;
         flex-direction: inherit;
+    }
+
+    #destination-title {
+        color: black;
+        font-size: 30px;
+    }
+
+    #trip-modal {
+        background-color: white;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
     }
 }
 

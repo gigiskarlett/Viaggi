@@ -1,7 +1,5 @@
 'use strict';
 
-//var dateFormat = require('dateformat');
-
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 

@@ -5,6 +5,7 @@
         "form",
         "signin",
         "signup",
+        "smalltext",
         "timeinterval"
     ]
 }

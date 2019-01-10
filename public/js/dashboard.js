@@ -34,7 +34,7 @@ function fetchTrips(callback) {
       console.log(responseJson)
       return responseJson
   })
-  .then(responseJson => callback(responseJson))
+  .then(responseJson => createTripModal(responseJson))
   .catch(err => {
     $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.");
   });
@@ -76,7 +76,38 @@ function displaySelectedModal() {
 //////// manipulation of data ////
 
 function createTripModal(responseJson) {
+  $(".js-trips-container").empty();
 
+  if(responseJson.length > 0) {
+    for(let i = 0; i < responseJson.length; i++) {
+      $(".js-trips-container").append(`
+      <div id="trip-modal">
+        <h2 id="destination-title">${responseJson[i].destination}</h2>
 
+        <section id="date-container">
+
+          <section id="left">
+            <p id="date-label">When?</p>
+            <p id="trip date">${responseJson[i].when}</p>
+          </section>
+
+          <section id= "right">
+            <p id="date-label">Returning</p>
+            <p id="return date">${responseJson[i].lastDayOfTrip}</p>
+          </section>
+
+        </section>
+
+        <div>
+          <p id="details-box">${responseJson[i].tripDetails}</p>
+        </div>
+
+      </div>
+      `);
+    }
+  }
 }
+
+
+
 

@@ -82,6 +82,9 @@ function createTripModal(responseJson) {
     for(let i = 0; i < responseJson.length; i++) {
       $(".js-trips-container").append(`
       <div id="trip-modal">
+  
+      <button id="edit-button">edit</button>
+
         <h2 id="destination-title">${responseJson[i].destination}</h2>
 
         <section id="date-container">
@@ -99,8 +102,11 @@ function createTripModal(responseJson) {
         </section>
 
         <div>
+          <p id="details-label">Trip details:</p>
           <p id="details-box">${responseJson[i].tripDetails}</p>
         </div>
+
+        <button class="delete-button">delete</button>
 
       </div>
       `);

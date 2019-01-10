@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', jsonParser, (req, res) => {
-    const requiredFields = ['destination', 'when', 'lastDayOfTrip'];
+    const requiredFields = ['destination', 'when', 'lastDayOfTrip', 'tripDetails'];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
         if (!(field in req.body)) {

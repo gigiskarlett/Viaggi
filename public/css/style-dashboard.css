@@ -220,7 +220,7 @@ nav a {
     font-size: 30px;
 }
 
-#trip-modal {
+.trip-section {
     background-color: white;
     padding: 10px;
     border-radius: 5px;
@@ -229,7 +229,7 @@ nav a {
     margin-bottom: 30px;
 }
 
-#clockdiv{
+.clockdiv{
     font-family: sans-serif;
     color: #fff;
     display: block;
@@ -238,14 +238,14 @@ nav a {
     font-size: 30px;
 }
 
-#clockdiv > div{
+.clockdiv > div{
     padding: 10px;
     border-radius: 3px;
     background: black;
     display: inline-block;
 }
 
-#clockdiv div > span{
+.clockdiv div > span{
     padding: 15px;
     border-radius: 3px;
     background: #00BF96;
@@ -375,7 +375,7 @@ nav a {
         font-size: 30px;
     }
 
-    #trip-modal {
+    .trip-section {
 
         padding: 10px;
         border-radius: 5px;
@@ -387,7 +387,7 @@ nav a {
     /* countdown clock */
 
 
-    #clockdiv{
+    .clockdiv{
         font-family: sans-serif;
         display: block;
         font-weight: 100;
@@ -395,13 +395,13 @@ nav a {
         font-size: 30px;
     }
 
-    #clockdiv > div{
+    .clockdiv > div{
         padding: 10px;
         border-radius: 3px;
         display: inline-block;
     }
 
-    #clockdiv div > span{
+    .clockdiv div > span{
         padding: 15px;
         border-radius: 3px;
         display: inline-block;

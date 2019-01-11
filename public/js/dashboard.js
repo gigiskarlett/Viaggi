@@ -1,5 +1,3 @@
-let deadline = new Date(Date.parse(new Date('01/12/2019')))  //test date
-
 
 //binds event handlers
 $(() => {
@@ -40,8 +38,8 @@ function fetchTrips(callback) {
       return responseJson
   })
   .then(responseJson =>  {
-    createTripModal(responseJson)
-    initializeClock('clockdiv', deadline);
+    renderAllTrips(responseJson)
+   
   }) 
   .catch(err => {
     $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.");
@@ -104,64 +102,70 @@ function deleteEntry() {
 
 //////// manipulation of data ////
 
-//Creates trip modal
-function createTripModal(responseJson) {
-  $(".js-trips-container").empty();
 
+function renderTrip(trip){
+ return ` <div class='trip-section' id='${trip.id}'>
+
+ <button id="edit-button">edit</button>
+
+   <h2 id="destination-title">${trip.destination}</h2>
+   
+   <div class="clockdiv">
+     <div>
+       <span class="days"></span>
+       <div class="smalltext">Days</div>
+     </div>
+
+     <div>
+       <span class="hours"></span>
+       <div class="smalltext">Hours</div>
+     </div>
+
+     <div>
+       <span class="minutes"></span>
+       <div class="smalltext">Minutes</div>
+     </div>
+
+     <div>
+       <span class="seconds"></span>
+       <div class="smalltext">Seconds</div>
+     </div>
+   </div>
+
+   <section id="date-container">
+
+     <section id="left">
+       <p id="date-label">When?</p>
+       <p id="trip date">${trip.when}</p>
+     </section>
+
+     <section id= "right">
+       <p id="date-label">Returning</p>
+       <p id="return date">${trip.lastDayOfTrip}</p>
+     </section>
+
+   </section>
+
+   <div>
+     <p id="details-label">Trip details:</p>
+     <p id="details-box">${trip.tripDetails}</p>
+   </div>
+
+   <button class="delete-button">delete</button>
+
+ </div>
+ `
+}
+
+
+//Creates trip modal
+function renderAllTrips(responseJson) {
+  $(".js-trips-container").empty();
   if(responseJson.length > 0) {
     for(let i = 0; i < responseJson.length; i++) {
-      $(".js-trips-container").append(`
-      <div id='trip-modal'>
-  
-      <button id="edit-button">edit</button>
-
-        <h2 id="destination-title">${responseJson[i].destination}</h2>
-        
-        <div id="clockdiv">
-          <div>
-            <span class="days"></span>
-            <div class="smalltext">Days</div>
-          </div>
-
-          <div>
-            <span class="hours"></span>
-            <div class="smalltext">Hours</div>
-          </div>
-
-          <div>
-            <span class="minutes"></span>
-            <div class="smalltext">Minutes</div>
-          </div>
-
-          <div>
-            <span class="seconds"></span>
-            <div class="smalltext">Seconds</div>
-          </div>
-        </div>
-
-        <section id="date-container">
-
-          <section id="left">
-            <p id="date-label">When?</p>
-            <p id="trip date">${responseJson[i].when}</p>
-          </section>
-
-          <section id= "right">
-            <p id="date-label">Returning</p>
-            <p id="return date">${responseJson[i].lastDayOfTrip}</p>
-          </section>
-
-        </section>
-
-        <div>
-          <p id="details-label">Trip details:</p>
-          <p id="details-box">${responseJson[i].tripDetails}</p>
-        </div>
-
-        <button class="delete-button">delete</button>
-
-      </div>
-      `);
+      let trip = responseJson[i];
+      $(".js-trips-container").append(renderTrip(trip));
+      initializeClock(trip);
     }
   }
 }
@@ -170,29 +174,28 @@ function createTripModal(responseJson) {
 
 //gets remaining time to date
 function getTimeRemaining(startTime) {
-  var t = Date.parse(startTime) - Date.parse(new Date());
-  var seconds = Math.floor((t / 1000) % 60);
-  var minutes = Math.floor((t / 1000 / 60) % 60);
-  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  let t = Date.parse(startTime) - Date.parse(new Date());
   return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
+    total: t,
+    days: Math.floor(t / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((t / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((t / 1000 / 60) % 60),
+    seconds: Math.floor((t / 1000) % 60)
   };
 }
 
 //initializes clock
-function initializeClock(id, startTime) {
-  let clock = $(`#${id}`);
+function initializeClock(trip) {
+
+  let startTime = new Date(Date.parse(new Date(trip.when)))  //test date
+
+
+
+  let clock = $(`#${trip.id}`).find(".clockdiv");
   let daysSpan = clock.find('.days');
   let hoursSpan = clock.find('.hours');
   let minutesSpan = clock.find('.minutes');
   let secondsSpan = clock.find('.seconds');
-
-  console.log(secondsSpan)
 
   function updateClock() {
     var t = getTimeRemaining(startTime);
@@ -207,12 +210,9 @@ function initializeClock(id, startTime) {
     }
   }
 
-  updateClock();
+ // updateClock();
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-
-
-////
 
 

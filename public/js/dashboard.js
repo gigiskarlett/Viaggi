@@ -1,5 +1,7 @@
-//binds event handlers
+let deadline = new Date(Date.parse(new Date('01/12/2019')))  //test date
 
+
+//binds event handlers
 $(() => {
   fetchTrips();  
   openEntryModal();
@@ -11,16 +13,19 @@ $(() => {
 //opens modal when button is clicked
 function openEntryModal() {
   $('#button-container').on('click', '.js-create-button', function() {
-  $('.js-modal-container').show();
+    $('.container').addClass('opaque');
+    $('.js-modal-container').show();
   });
 }
 
 
-//closes modal when user clicks cancel
+//confirms user wants to close modal when user clicks cancel and closes it
 function closeModal() {
   $('.js-entry-modal').on('click', '.js-cancel-button', function() {
     confirm("Are you sure you want to close without submitting your trip?");
     $('.js-modal-container').hide();
+    $('.container').removeClass('opaque');
+    clearTripModal();
   })
 }
 
@@ -39,6 +44,12 @@ function fetchTrips(callback) {
     $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.");
   });
 }
+
+//listens for submit of new trip
+const submitNewTrip = () => {
+
+}
+//posts trip
 const postTrip = (newTripEntry) => {
   fetch('/trips',
   {
@@ -52,14 +63,29 @@ const postTrip = (newTripEntry) => {
   })
   .then(response => {
     fetchTrips();
-    return response.json()
   })
   .catch(error => console.log('Bad request'));
 }
 
+//clears fields in trip modal
+function clearTripModal() {
+  $('.entry-input').val('');
+  $('.date').val('');
+  $('#description-field').val('');
+}
+
+//listens for when user selects edit
+const submitEdit = () => {
+
+}
 
 //edits trip
 function editEntry() {
+
+}
+
+//listens for when user selects delete
+const submitDelete = () => {
 
 }
 
@@ -68,10 +94,6 @@ function deleteEntry() {
 
 }
 
-//show trip modal on click
-function displaySelectedModal() {  
-
-}
 
 //////// manipulation of data ////
 
@@ -140,7 +162,6 @@ function createTripModal(responseJson) {
 ///// countdown clock /////
 
 //gets remaining time to date
-
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
   var seconds = Math.floor((t / 1000) % 60);
@@ -180,8 +201,6 @@ function initializeClock(id, endtime) {
   updateClock();
   var timeinterval = setInterval(updateClock, 1000);
 }
-
-var deadline = new Date(Date.parse(new Date('01/12/2019'))) 
 
 initializeClock('clockdiv', deadline);
 

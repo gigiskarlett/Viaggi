@@ -189,8 +189,6 @@ function initializeClock(trip) {
 
   let startTime = new Date(Date.parse(new Date(trip.when)))  //test date
 
-
-
   let clock = $(`#${trip.id}`).find(".clockdiv");
   let daysSpan = clock.find('.days');
   let hoursSpan = clock.find('.hours');

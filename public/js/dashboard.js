@@ -33,7 +33,7 @@ function closeModal() {
 
 //fetches trip data
 function fetchTrips(callback) {
-  fetch("http://localhost:8080/trips")
+  fetch("http://localhost:8080/api/trips")
   .then(response => response.json())
   .then(responseJson => {
       console.log(responseJson)
@@ -58,7 +58,7 @@ function fetchTrips(callback) {
 // }
 //posts trip
 const postTrip = (newTripEntry) => {
-  fetch('/trips',
+  fetch('/api/trips',
   {
     headers: {
       'Accept': 'application/json',
@@ -169,8 +169,8 @@ function createTripModal(responseJson) {
 ///// countdown clock /////
 
 //gets remaining time to date
-function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
+function getTimeRemaining(startTime) {
+  var t = Date.parse(startTime) - Date.parse(new Date());
   var seconds = Math.floor((t / 1000) % 60);
   var minutes = Math.floor((t / 1000 / 60) % 60);
   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
@@ -185,20 +185,22 @@ function getTimeRemaining(endtime) {
 }
 
 //initializes clock
-function initializeClock(id, endtime) {
-  let clock = document.getElementById(id);
-  let daysSpan = clock.querySelector('.days');
-  let hoursSpan = clock.querySelector('.hours');
-  let minutesSpan = clock.querySelector('.minutes');
-  let secondsSpan = clock.querySelector('.seconds');
+function initializeClock(id, startTime) {
+  let clock = $(`#${id}`);
+  let daysSpan = clock.find('.days');
+  let hoursSpan = clock.find('.hours');
+  let minutesSpan = clock.find('.minutes');
+  let secondsSpan = clock.find('.seconds');
+
+  console.log(secondsSpan)
 
   function updateClock() {
-    var t = getTimeRemaining(endtime);
+    var t = getTimeRemaining(startTime);
 
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    daysSpan.html(t.days);
+    hoursSpan.html(('0' + t.hours).slice(-2));
+    minutesSpan.html(('0' + t.minutes).slice(-2));
+    secondsSpan.html(('0' + t.seconds).slice(-2));
 
     if (t.total <= 0) {
       clearInterval(timeinterval);

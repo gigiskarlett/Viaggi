@@ -39,16 +39,23 @@ function fetchTrips(callback) {
       console.log(responseJson)
       return responseJson
   })
-  .then(responseJson => createTripModal(responseJson))
+  .then(responseJson =>  {
+    createTripModal(responseJson)
+    initializeClock('clockdiv', deadline);
+  }) 
   .catch(err => {
     $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.");
   });
 }
 
 //listens for submit of new trip
-const submitNewTrip = () => {
-
-}
+// const submitNewTrip = () => {
+//   $('.js-submit-button').submit(event => {
+//     event.preventDefault();
+//     const 
+//   })
+    
+// }
 //posts trip
 const postTrip = (newTripEntry) => {
   fetch('/trips',
@@ -202,7 +209,6 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-initializeClock('clockdiv', deadline);
 
 
 ////

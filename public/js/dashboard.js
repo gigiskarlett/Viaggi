@@ -82,11 +82,33 @@ function createTripModal(responseJson) {
   if(responseJson.length > 0) {
     for(let i = 0; i < responseJson.length; i++) {
       $(".js-trips-container").append(`
-      <div id="trip-modal">
+      <div id='trip-modal'>
   
       <button id="edit-button">edit</button>
 
         <h2 id="destination-title">${responseJson[i].destination}</h2>
+        
+        <div id="clockdiv">
+          <div>
+            <span class="days"></span>
+            <div class="smalltext">Days</div>
+          </div>
+
+          <div>
+            <span class="hours"></span>
+            <div class="smalltext">Hours</div>
+          </div>
+
+          <div>
+            <span class="minutes"></span>
+            <div class="smalltext">Minutes</div>
+          </div>
+
+          <div>
+            <span class="seconds"></span>
+            <div class="smalltext">Seconds</div>
+          </div>
+        </div>
 
         <section id="date-container">
 
@@ -118,6 +140,7 @@ function createTripModal(responseJson) {
 ///// countdown clock /////
 
 //gets remaining time to date
+
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
   var seconds = Math.floor((t / 1000) % 60);
@@ -135,11 +158,11 @@ function getTimeRemaining(endtime) {
 
 //initializes clock
 function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
+  let clock = document.getElementById(id);
+  let daysSpan = clock.querySelector('.days');
+  let hoursSpan = clock.querySelector('.hours');
+  let minutesSpan = clock.querySelector('.minutes');
+  let secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);

@@ -4,7 +4,8 @@ $(() => {
   fetchTrips();  
   openEntryModal();
   closeModal();
-  submitNewTrip()
+  submitNewTrip();
+  displayEditModal();
 });
 
 //// Modal functionality /////
@@ -69,9 +70,8 @@ function submitNewTrip() {
     newTrip.when = $('.when').val();
     newTrip.lastDayOfTrip = $('.lastDayTrip').val();
     newTrip.tripDetails = $('#description-field').val();
-    console.log(newTrip.destination, newTrip.when, newTrip.lastDayOfTrip, newTrip.tripDetails)
     postTrip(newTrip);
-    hideModal()
+    hideModal();
   }); 
 }
 
@@ -97,29 +97,59 @@ const postTrip = (newTrip) => {
 //gets trip ID
 function getTripId() {
   const tripID = $(this).closest('.trip-section').find('id');
-  return entryID;
+  return tripID;
+}
+
+//opens edit modal for trip 
+function displayEditModal() {
+
 }
 
 // gets trip by id
-// const getOneTrip = () => {
-//   fetch()
-// }
+const getOneTrip = (tripID) => {
+  fetch(`api/trips/${tripID}`, 
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      //'Authorization' : `Bearer ${localStorage.getITem('authToken')}`
+    },
+    method: "GET"
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(res => {
+      populateEditTripModal(res);
+    })
+    .catch(error => console.log('Bad request'));
+}
 
 // populates modal for edit
 const populateEditTripModal = () => {
-
+  $('.trip-section')
 }
 
 
 //listens for when user selects edit
-// const submitEdit = () => {
-//   $('.trip-section').on('click', '.js-edit-button', function(event) {
-//     event.preventDefault();
-//   })
-// }
+const listensForEdit = () => {
+  $('.trip-section').on('click', '.js-edit-submit-button', function(event) {
+    event.preventDefault();
+    displayEditModal();
+    let editedTrip = {};
+    editedTrip.destination = $('.entry-input').val();
+    editedTrip.when = $('.when').val();
+    editedTrip.lastDayOfTrip = $('.lastDayTrip').val();
+    editedTrip.tripDetails = $('#description-field').val();
+    console.log(editedTrip.destination, editedTrip.when, editedTrip.lastDayOfTrip, editedTrip.tripDetails)
+    submitEditEntry(editedTrip);
+    hideModal();
+    fetchTrips();
+  });
+}
 
 //submits edits trip
-const editEntry = (editedTrip) => {
+const submitEditEntry = (editedTrip) => {
  fetch(`api/trips/${editedTrip.id}`, 
  {
   headers: {

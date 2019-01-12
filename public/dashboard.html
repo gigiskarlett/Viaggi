@@ -66,31 +66,31 @@
 
         <div class="modal-container js-modal-container" hidden>
             
-            <form class="entry-modal js-entry-modal" aria-live="polite" >
+            <form class="entry-modal js-entry-modal" aria-live="polite">
                 <fieldset>
                     <legend>
                     <span id="modal-entry-id" class="hidden"></span>
                     </legend>
 
                     <label for="Destination">Destination</label>
-                    <input class="entry-input " placeholder="Where will you be going?" type="text" id="destination-field" name="Destination" required />
+                    <input class="entry-input " placeholder="Where will you be going?" type="text" id="destination-field" name="Destination" required/>
                     
                     <div id="date-container">
 
                         <div id="left">
                             <label for="When?">When?</label>
-                            <input class="date input" type="date" id="When-field" name="When" required/>
+                            <input class="date input when" type="date" id="When-field" name="When" required/>
                         </div>
 
                         <div id= "right">
                             <label for="Last day of trip?">Last day of trip?</label>
-                            <input class= "date input" type="date" id="last-day-field" name="Last day of trip?" required/>
+                            <input class= "date input lastDayTrip" type="date" id="last-day-field" name="Last day of trip?" required/>
                         </div>
 
                     </div>
 
                     <label for="Trip Details">Trip Details</label>
-                    <textarea id="description-field" placeholder="Write details about your trip..." name="Trip Details" rows="4"> </textarea>
+                    <textarea id="description-field" placeholder="Write details about your trip..." name="Trip Details" rows="4" required> </textarea>
 
                     <button type="button" class="submit-button js-submit-button" role="button">ADD TRIP</button>
                     <button type="button" class="cancel-button js-cancel-button" role="button">Cancel</button>

@@ -143,7 +143,7 @@ fieldset {
 
 
 .cancel-button, 
-#edit-button, .delete-button  {
+.edit-button, .delete-button  {
     border: none;
     margin-top: 10px;
     background-color: white;
@@ -151,7 +151,7 @@ fieldset {
     font-size: 15px;
 }
 
-#edit-button {
+.edit-button {
     margin-top: 0;
     
 }

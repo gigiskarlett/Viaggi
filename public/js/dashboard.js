@@ -4,6 +4,7 @@ $(() => {
   fetchTrips();  
   openEntryModal();
   closeModal();
+  submitNewTrip()
 });
 
 //// Modal functionality /////
@@ -27,6 +28,19 @@ function closeModal() {
   })
 }
 
+//clears fields in trip modal
+function clearTripModal() {
+  $('.entry-input').val('');
+  $('.date').val('');
+  $('#description-field').val('');
+}
+
+const hideModal = () => {
+  $('.container').removeClass('opaque');
+  $('.js-entry-modal').hide();
+  clearTripModal()
+}
+
 //// CRUD operations for trips data /////
 
 //fetches trip data
@@ -47,15 +61,22 @@ function fetchTrips(callback) {
 }
 
 //listens for submit of new trip
-// const submitNewTrip = () => {
-//   $('.js-submit-button').submit(event => {
-//     event.preventDefault();
-//     const 
-//   })
-    
-// }
+function submitNewTrip() {
+  $('form').on('click', '.js-submit-button', function(event){
+    event.preventDefault();
+    let newTrip = {};
+    newTrip.destination = $('.entry-input').val();
+    newTrip.when = $('.when').val();
+    newTrip.lastDayOfTrip = $('.lastDayTrip').val();
+    newTrip.tripDetails = $('#description-field').val();
+    console.log(newTrip.destination, newTrip.when, newTrip.lastDayOfTrip, newTrip.tripDetails)
+    postTrip(newTrip);
+    hideModal()
+  }); 
+}
+
 //posts trip
-const postTrip = (newTripEntry) => {
+const postTrip = (newTrip) => {
   fetch('/api/trips',
   {
     headers: {
@@ -64,20 +85,15 @@ const postTrip = (newTripEntry) => {
       // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     },
     method: "POST",
-    body: JSON.stringify(newTripEntry)
+    body: JSON.stringify(newTrip)
   })
   .then(response => {
     fetchTrips();
+    return response.json()
   })
   .catch(error => console.log('Bad request'));
 }
 
-//clears fields in trip modal
-function clearTripModal() {
-  $('.entry-input').val('');
-  $('.date').val('');
-  $('#description-field').val('');
-}
 
 //listens for when user selects edit
 const submitEdit = () => {
@@ -187,7 +203,7 @@ function getTimeRemaining(startTime) {
 //initializes clock
 function initializeClock(trip) {
 
-  let startTime = new Date(Date.parse(new Date(trip.when)))  //test date
+  let startTime = new Date(Date.parse(new Date(trip.when)))  
 
   let clock = $(`#${trip.id}`).find(".clockdiv");
   let daysSpan = clock.find('.days');

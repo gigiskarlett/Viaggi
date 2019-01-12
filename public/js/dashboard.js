@@ -94,15 +94,47 @@ const postTrip = (newTrip) => {
   .catch(error => console.log('Bad request'));
 }
 
+//gets trip ID
+function getTripId() {
+  const tripID = $(this).closest('.trip-section').find('id');
+  return entryID;
+}
 
-//listens for when user selects edit
-const submitEdit = () => {
+// gets trip by id
+// const getOneTrip = () => {
+//   fetch()
+// }
+
+// populates modal for edit
+const populateEditTripModal = () => {
 
 }
 
-//edits trip
-function editEntry() {
 
+//listens for when user selects edit
+// const submitEdit = () => {
+//   $('.trip-section').on('click', '.js-edit-button', function(event) {
+//     event.preventDefault();
+//   })
+// }
+
+//submits edits trip
+const editEntry = (editedTrip) => {
+ fetch(`api/trips/${editedTrip.id}`, 
+ {
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type' : 'application/json',
+    // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+  },
+  method: "PUT",
+  body: JSON.stringify(editedTrip)
+ })
+ .then(response => {
+   fetchTrips();
+   return response.json()
+ })
+ .catch(error => console.log('Bad request'));
 }
 
 //listens for when user selects delete
@@ -122,7 +154,7 @@ function deleteEntry() {
 function renderTrip(trip){
  return ` <div class='trip-section' id='${trip.id}'>
 
- <button id="edit-button">edit</button>
+ <button class="js-edit-button edit-button">edit</button>
 
    <h2 id="destination-title">${trip.destination}</h2>
    

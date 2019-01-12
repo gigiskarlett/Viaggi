@@ -62,7 +62,7 @@ function fetchTrips(callback) {
 
 //listens for submit of new trip
 function submitNewTrip() {
-  $('form').on('click', '.js-submit-button', function(event){
+  $('.js-entry-modal').on('click', '.js-submit-button', function(event){
     event.preventDefault();
     let newTrip = {};
     newTrip.destination = $('.entry-input').val();

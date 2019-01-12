@@ -90,6 +90,7 @@ fieldset {
 
 .entry-input, .date {
     height: 20px;
+    padding: 2px;
 }
 
 .modal-container {
@@ -261,15 +262,6 @@ nav a {
     opacity: .5;
 }
 
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 600px){
      nav {
         flex-direction: column;
@@ -390,9 +382,10 @@ nav a {
     .clockdiv{
         font-family: sans-serif;
         display: block;
-        font-weight: 100;
         text-align: center;
         font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .clockdiv > div{

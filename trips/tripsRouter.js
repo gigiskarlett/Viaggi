@@ -75,7 +75,8 @@ app.delete('/:id', (req, res) => {
     .then(() => {
       console.log(`Deleted blog post with id \`${req.params.id}\``);
       res.status(204).end();
-    });
+    })
+    .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
 
 

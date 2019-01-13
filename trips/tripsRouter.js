@@ -22,6 +22,7 @@ const app = express.Router();
 app.get('/', (req, res) => {
     TripPost
     .find()
+    .sort({when: 1})
     .then(trips => {
         res.json(trips.map(trip => trip.serialize()));
     })

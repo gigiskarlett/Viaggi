@@ -31,6 +31,16 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/:id', (req, res) => {
+    TripPost
+    .findById(req.params.id)
+    .then(trips => res.json(trips.serialize()))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: 'something went horribly wrong'});
+    });
+});
+
 app.post('/', jsonParser, (req, res) => {
     const requiredFields = ['destination', 'when', 'lastDayOfTrip', 'tripDetails'];
     for (let i = 0; i < requiredFields.length; i++) {
@@ -70,8 +80,8 @@ app.delete('/:id', (req, res) => {
 
 app.put('/:id', jsonParser, (req, res) => {
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-        res.status(400).json({
-          error: 'Request path id and request body id values must match'
+        res.status(500).json({
+          message: 'Request path id and request body id values must match'
         });
     }
     
@@ -84,10 +94,9 @@ app.put('/:id', jsonParser, (req, res) => {
     });
     
     TripPost
-        .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
+        .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true }) //what differs if I have new?
         .then(TripPost => res.status(204).end())
         .catch(err => res.status(500).json({ message: 'Something went wrong' }));
-        res.status(204).end();
 }); 
 
 app.use('*', function (req, res) {

@@ -25,7 +25,7 @@ function openEntryModal() {
 //confirms user wants to close modal when user clicks cancel and closes it
 function closeModal() {
   $('.js-entry-modal').on('click', '.js-cancel-button', function() {
-    confirm("Are you sure you want to close without submitting your trip?");
+    if ( !confirm("Are you sure you want to close without submitting your trip?")) return alert("That was a close call!")
     $('.js-modal-container').hide();
     $('.container').removeClass('opaque');
     clearTripModal();

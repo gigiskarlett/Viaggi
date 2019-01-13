@@ -2,10 +2,12 @@
     "cSpell.words": [
         "clockdiv",
         "endtime",
+        "fields",
         "form",
         "signin",
         "signup",
         "smalltext",
-        "timeinterval"
+        "timeinterval",
+        "updateable"
     ]
 }

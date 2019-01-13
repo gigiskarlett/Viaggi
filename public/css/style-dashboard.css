@@ -109,13 +109,13 @@ fieldset {
     flex-direction: column; 
 }
 
-.submit-button, .delete-button, .cancel-button {
+.submit-button, .delete-button, .cancel-button, .edit-submit-button {
     display: block;
     margin: auto;
     margin-top: 5px;
 }
 
-.submit-button {
+.submit-button, .edit-submit-button {
     display: block;
     background-color: #3498DB;
     height: 30px;
@@ -135,7 +135,7 @@ fieldset {
     text-align: center;
 }
 
-.submit-button:hover {
+.submit-button:hover, .edit-submit-button:hover{
     background-color: darken(#3498DB, 10%);
     cursor: pointer;
 }
@@ -324,12 +324,12 @@ nav a {
     }
     
 
-    .submit-button, .cancel-button {
+    .submit-button, .cancel-button, .edit-submit-button {
         margin-top: 5px;
     }
 
 
-    .submit-button {
+    .submit-button, .edit-submit-button {
         height: 40px;
         border-radius: 20px;
         line-height: 36px;

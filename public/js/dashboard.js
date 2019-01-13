@@ -176,7 +176,7 @@ const submitEditEntry = (editedTrip, tripID) => {
   body: JSON.stringify(editedTrip)
  })
  .then(response => {
-  hideModal();
+    hideModal();
     fetchTrips();
  })
  .catch(error => console.log('error'));
@@ -189,15 +189,29 @@ const getIdToDelEntry = () => {
   $('.js-trips-container').on('click', '.js-delete-button', function(event) {
     event.preventDefault()
     const delTripID = $(event.target)[0].attributes[1].nodeValue;
+    deleteEntry(delTripID); 
     console.log(delTripID)
   });
 }
 
 //deletes trip entry
-function deleteEntry() {
-
+function deleteEntry(delTripID) {
+  fetch(`/api/trips/${delTripID}`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: "DELETE",
+    body: JSON.stringify(delTripID)
+  })
+  .then(response => {
+    fetchTrips();
+    return response.json();
+    
+  })
+  .catch(error => console.log('Bad request'));
 }
-
 
 //////// manipulation of data ////
 

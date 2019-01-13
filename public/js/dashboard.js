@@ -5,7 +5,8 @@ $(() => {
   openEntryModal();
   closeModal();
   submitNewTrip();
-  openEditModal();
+  geiIdToEditEntry();
+
 });
 
 //// Modal functionality /////
@@ -14,12 +15,12 @@ $(() => {
 function openEntryModal() {
   $('#button-container').on('click', '.js-create-button', function() {
     $('.js-edit-submit-button').hide();
+    $('.js-submit-button').show()
     $('.container').addClass('opaque');
     $('.js-modal-container').show();
 
   });
 }
-
 
 //confirms user wants to close modal when user clicks cancel and closes it
 function closeModal() {
@@ -31,12 +32,7 @@ function closeModal() {
   })
 }
 
-//opens modal for editing
-function openModal() {
-  $('.container').addClass('opaque');
-  $('.js-submit-button').hide();
-  $('.js-modal-container').show();
-}
+
 
 //clears fields in trip modal
 function clearTripModal() {
@@ -45,6 +41,7 @@ function clearTripModal() {
   $('#description-field').val('');
 }
 
+//hides modal
 const hideModal = () => {
   $('.container').removeClass('opaque');
   $('.js-entry-modal').hide();
@@ -103,8 +100,20 @@ const postTrip = (newTrip) => {
   .catch(error => console.log('Bad request'));
 }
 
+//edit one trip -- PUT/:id
 
-// // gets trip by id
+//gets id of modal selected for editing
+function geiIdToEditEntry() {
+  $('.js-trips-container').on('click', '.js-edit-button', function(event) {
+    event.preventDefault()
+    const tripID = $(event.currentTarget)[0].attributes[1].nodeValue;
+    console.log(tripID)
+    getOneTrip(tripID);    
+    openModal(tripID);
+  });
+}
+
+// gets trip by id
 const getOneTrip = (tripID) => {
   fetch(`api/trips/${tripID}`, 
   {
@@ -118,22 +127,13 @@ const getOneTrip = (tripID) => {
       return response.json()
     })
     .then(responseJson => {
+      clearTripModal();
       populateEditModal(responseJson); 
     })
     .catch(error => console.log('Bad request'));
 }
 
-function openEditModal() {
-  $('.js-trips-container').on('click', '.js-edit-button', function(event) {
-    event.preventDefault()
-    tripID = $(event.currentTarget)[0].attributes[1].nodeValue;
-    getOneTrip(tripID);    
-    openModal();
-  });
-}
-
-
-// // populates modal for edit
+// populates modal with trip for edition
 function populateEditModal(responseJson) {
   $('.entry-input').val(`${responseJson.destination}`);
   $('.when').val(`${responseJson.when}`);
@@ -141,41 +141,47 @@ function populateEditModal(responseJson) {
   $('#description-field').val(`${responseJson.tripDetails}`);
 };
 
+//opens modal for editing
+function openModal(tripID) {
+  $('.container').addClass('opaque');
+  $('.js-submit-button').hide();
+  $('.js-edit-submit-button').show();
+  $('.js-modal-container').show();
+    listensForEditSubmit(tripID);
+}
 
-// //listens for when user selects edit
-const listensForEditSubmit = () => {
-  $('.trip-section').on('click', '.js-submit-button', function(event) {
+//listens for when user submits edit
+const listensForEditSubmit = (tripID) => {
+  $('.js-edit-submit-button').on('click', function(event) {
     event.preventDefault();
     let editedTrip = {};    
     editedTrip.destination = $('.entry-input').val();
     editedTrip.when = $('.when').val();
     editedTrip.lastDayOfTrip = $('.lastDayTrip').val();
     editedTrip.tripDetails = $('#description-field').val();
-    editedTrip.id = (`${trip.id}`).text();
-    submitEditEntry(editedTrip);
+    tripID;
+    console.log(editedTrip, tripID)
+    submitEditEntry(editedTrip, tripID);
     hideModal();
-    fetchTrips();
   });
 }
 
 // //submits edits trip
-// const submitEditEntry = (editedTrip) => {
-//  fetch(`api/trips/${editedTrip.id}`, 
-//  {
-//   headers: {
-//     'Accept': 'application/json',
-//     'Content-Type' : 'application/json',
-//     // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-//   },
-//   method: "PUT",
-//   body: JSON.stringify(editedTrip)
-//  })
-//  .then(response => {
-//    fetchTrips();
-//    return response.json()
-//  })
-//  .catch(error => console.log('Bad request'));
-// }
+const submitEditEntry = (editedTrip, tripID) => {
+ fetch(`api/trips/${tripID}`, 
+ {
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type' : 'application/json',
+  },
+  method: "PUT",
+  body: JSON.stringify(editedTrip)
+ })
+ .then(response => {
+    fetchTrips();
+ })
+ .catch(error => console.log('error'));
+}
 
 //listens for when user selects delete
 const submitDelete = () => {

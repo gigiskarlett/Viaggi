@@ -5,7 +5,7 @@ $(() => {
   openEntryModal();
   closeModal();
   submitNewTrip();
-  displayEditModal();
+  openEditModal();
 });
 
 //// Modal functionality /////
@@ -13,8 +13,10 @@ $(() => {
 //opens modal when button is clicked
 function openEntryModal() {
   $('#button-container').on('click', '.js-create-button', function() {
+    $('.js-edit-submit-button').hide();
     $('.container').addClass('opaque');
     $('.js-modal-container').show();
+
   });
 }
 
@@ -27,6 +29,13 @@ function closeModal() {
     $('.container').removeClass('opaque');
     clearTripModal();
   })
+}
+
+//opens modal for editing
+function openModal() {
+  $('.container').addClass('opaque');
+  $('.js-submit-button').hide();
+  $('.js-modal-container').show();
 }
 
 //clears fields in trip modal
@@ -94,78 +103,79 @@ const postTrip = (newTrip) => {
   .catch(error => console.log('Bad request'));
 }
 
-//gets trip ID
-function getTripId() {
-  const tripID = $(this).closest('.trip-section').find('id');
-  return tripID;
-}
 
-//opens edit modal for trip 
-function displayEditModal() {
-
-}
-
-// gets trip by id
+// // gets trip by id
 const getOneTrip = (tripID) => {
   fetch(`api/trips/${tripID}`, 
   {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      //'Authorization' : `Bearer ${localStorage.getITem('authToken')}`
     },
     method: "GET"
     })
     .then(response => {
       return response.json()
     })
-    .then(res => {
-      populateEditTripModal(res);
+    .then(responseJson => {
+      populateEditModal(responseJson); 
     })
     .catch(error => console.log('Bad request'));
 }
 
-// populates modal for edit
-const populateEditTripModal = () => {
-  $('.trip-section')
+function openEditModal() {
+  $('.js-trips-container').on('click', '.js-edit-button', function(event) {
+    event.preventDefault()
+    tripID = $(event.currentTarget)[0].attributes[1].nodeValue;
+    getOneTrip(tripID);    
+    openModal();
+  });
 }
 
 
-//listens for when user selects edit
-const listensForEdit = () => {
-  $('.trip-section').on('click', '.js-edit-submit-button', function(event) {
+// // populates modal for edit
+function populateEditModal(responseJson) {
+  $('.entry-input').val(`${responseJson.destination}`);
+  $('.when').val(`${responseJson.when}`);
+  $('.lastDayTrip').val(`${responseJson.lastDayOfTrip}`);
+  $('#description-field').val(`${responseJson.tripDetails}`);
+};
+
+
+// //listens for when user selects edit
+const listensForEditSubmit = () => {
+  $('.trip-section').on('click', '.js-submit-button', function(event) {
     event.preventDefault();
-    displayEditModal();
-    let editedTrip = {};
+    let editedTrip = {};    
     editedTrip.destination = $('.entry-input').val();
     editedTrip.when = $('.when').val();
     editedTrip.lastDayOfTrip = $('.lastDayTrip').val();
     editedTrip.tripDetails = $('#description-field').val();
-    console.log(editedTrip.destination, editedTrip.when, editedTrip.lastDayOfTrip, editedTrip.tripDetails)
+    editedTrip.id = (`${trip.id}`).text();
     submitEditEntry(editedTrip);
     hideModal();
     fetchTrips();
   });
 }
 
-//submits edits trip
-const submitEditEntry = (editedTrip) => {
- fetch(`api/trips/${editedTrip.id}`, 
- {
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type' : 'application/json',
-    // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-  },
-  method: "PUT",
-  body: JSON.stringify(editedTrip)
- })
- .then(response => {
-   fetchTrips();
-   return response.json()
- })
- .catch(error => console.log('Bad request'));
-}
+// //submits edits trip
+// const submitEditEntry = (editedTrip) => {
+//  fetch(`api/trips/${editedTrip.id}`, 
+//  {
+//   headers: {
+//     'Accept': 'application/json',
+//     'Content-Type' : 'application/json',
+//     // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+//   },
+//   method: "PUT",
+//   body: JSON.stringify(editedTrip)
+//  })
+//  .then(response => {
+//    fetchTrips();
+//    return response.json()
+//  })
+//  .catch(error => console.log('Bad request'));
+// }
 
 //listens for when user selects delete
 const submitDelete = () => {
@@ -182,9 +192,9 @@ function deleteEntry() {
 
 
 function renderTrip(trip){
- return ` <div class='trip-section' id='${trip.id}'>
+ return ` <div class='js-trip-section trip-section' id='${trip.id}'>
 
- <button class="js-edit-button edit-button">edit</button>
+ <button class="js-edit-button edit-button" data-tripId = '${trip.id}'>edit</button>
 
    <h2 id="destination-title">${trip.destination}</h2>
    
@@ -243,7 +253,7 @@ function renderAllTrips(responseJson) {
     for(let i = 0; i < responseJson.length; i++) {
       let trip = responseJson[i];
       $(".js-trips-container").append(renderTrip(trip));
-      initializeClock(trip);
+       initializeClock(trip);
     }
   }
 }

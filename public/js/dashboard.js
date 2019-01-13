@@ -6,7 +6,7 @@ $(() => {
   closeModal();
   submitNewTrip();
   geiIdToEditEntry();
-
+  getIdToDelEntry();
 });
 
 //// Modal functionality /////
@@ -44,7 +44,7 @@ function clearTripModal() {
 //hides modal
 const hideModal = () => {
   $('.container').removeClass('opaque');
-  $('.js-entry-modal').hide();
+  $('.js-modal-container').hide();
   clearTripModal()
 }
 
@@ -107,8 +107,7 @@ function geiIdToEditEntry() {
   $('.js-trips-container').on('click', '.js-edit-button', function(event) {
     event.preventDefault()
     const tripID = $(event.currentTarget)[0].attributes[1].nodeValue;
-    console.log(tripID)
-    getOneTrip(tripID);    
+    getOneTrip(tripID);     
     openModal(tripID);
   });
 }
@@ -143,7 +142,7 @@ function populateEditModal(responseJson) {
 
 //opens modal for editing
 function openModal(tripID) {
-  $('.container').addClass('opaque');
+  $('.container').addClass('opaque'); 
   $('.js-submit-button').hide();
   $('.js-edit-submit-button').show();
   $('.js-modal-container').show();
@@ -161,9 +160,7 @@ const listensForEditSubmit = (tripID) => {
     editedTrip.tripDetails = $('#description-field').val();
     editedTrip.id = tripID;
     tripID;
-    console.log(editedTrip, tripID)
     submitEditEntry(editedTrip, tripID);
-    hideModal();
   });
 }
 
@@ -179,14 +176,21 @@ const submitEditEntry = (editedTrip, tripID) => {
   body: JSON.stringify(editedTrip)
  })
  .then(response => {
+  hideModal();
     fetchTrips();
  })
  .catch(error => console.log('error'));
 }
 
-//listens for when user selects delete
-const submitDelete = () => {
+// deletes entry DEL/:id 
 
+//listens for when user selects delete
+const getIdToDelEntry = () => {
+  $('.js-trips-container').on('click', '.js-delete-button', function(event) {
+    event.preventDefault()
+    const delTripID = $(event.target)[0].attributes[1].nodeValue;
+    console.log(delTripID)
+  });
 }
 
 //deletes trip entry
@@ -246,7 +250,7 @@ function renderTrip(trip){
      <p id="details-box">${trip.tripDetails}</p>
    </div>
 
-   <button class="delete-button">delete</button>
+   <button class="js-delete-button delete-button" data-tripId = '${trip.id}'>delete</button>
 
  </div>
  `

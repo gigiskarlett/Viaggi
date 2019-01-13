@@ -32,8 +32,6 @@ function closeModal() {
   })
 }
 
-
-
 //clears fields in trip modal
 function clearTripModal() {
   $('.entry-input').val('');
@@ -50,7 +48,9 @@ const hideModal = () => {
 
 //// CRUD operations for trips data /////
 
-//fetches trip data
+//// GET all trips ////
+
+//fetches all trips
 function fetchTrips(callback) {
   fetch("http://localhost:8080/api/trips")
   .then(response => response.json())
@@ -66,6 +66,76 @@ function fetchTrips(callback) {
     $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.");
   });
 }
+
+// renders trip section //
+function renderTrip(trip){
+ return ` <div class='js-trip-section trip-section' id='${trip.id}'>
+
+ <button class="js-edit-button edit-button" data-tripId = '${trip.id}'>edit</button>
+
+   <h2 id="destination-title">${trip.destination}</h2>
+   
+   <div class="clockdiv">
+     <div>
+       <span class="days"></span>
+       <div class="smalltext">Days</div>
+     </div>
+
+     <div>
+       <span class="hours"></span>
+       <div class="smalltext">Hours</div>
+     </div>
+
+     <div>
+       <span class="minutes"></span>
+       <div class="smalltext">Minutes</div>
+     </div>
+
+     <div>
+       <span class="seconds"></span>
+       <div class="smalltext">Seconds</div>
+     </div>
+   </div>
+
+   <section id="date-container">
+
+     <section id="left">
+       <p id="date-label">When?</p>
+       <p id="trip date">${trip.when}</p>
+     </section>
+
+     <section id= "right">
+       <p id="date-label">Returning</p>
+       <p id="return date">${trip.lastDayOfTrip}</p>
+     </section>
+
+   </section>
+
+   <div>
+     <p id="details-label">Trip details:</p>
+     <p id="details-box">${trip.tripDetails}</p>
+   </div>
+
+   <button class="js-delete-button delete-button" data-tripId = '${trip.id}'>delete</button>
+
+ </div>
+ `
+}
+
+// Creates trip section and adds the clock //
+function renderAllTrips(responseJson) {
+  $(".js-trips-container").empty();
+  if(responseJson.length > 0) {
+    for(let i = 0; i < responseJson.length; i++) {
+      let trip = responseJson[i];
+      $(".js-trips-container").append(renderTrip(trip));
+       initializeClock(trip);
+    }
+  }
+}
+
+
+////     New trip POST    ////
 
 //listens for submit of new trip
 function submitNewTrip() {
@@ -100,7 +170,7 @@ const postTrip = (newTrip) => {
   .catch(error => console.log('Bad request'));
 }
 
-//edit one trip -- PUT/:id
+////Edit trip -- PUT/:id ////
 
 //gets id of modal selected for editing
 function geiIdToEditEntry() {
@@ -164,7 +234,7 @@ const listensForEditSubmit = (tripID) => {
   });
 }
 
-// //submits edits trip
+//submits edits trip
 const submitEditEntry = (editedTrip, tripID) => {
  fetch(`api/trips/${tripID}`, 
  {
@@ -182,13 +252,14 @@ const submitEditEntry = (editedTrip, tripID) => {
  .catch(error => console.log('error'));
 }
 
-// deletes entry DEL/:id 
+//// deletes entry DEL/:id ////
 
 //listens for when user selects delete
 const getIdToDelEntry = () => {
   $('.js-trips-container').on('click', '.js-delete-button', function(event) {
     event.preventDefault()
     const delTripID = $(event.target)[0].attributes[1].nodeValue;
+    if ( !confirm("Are you sure you want to delete this trip?")) return alert("Saying yes to vacation, I like it!")
     deleteEntry(delTripID); 
     console.log(delTripID)
   });
@@ -216,72 +287,9 @@ function deleteEntry(delTripID) {
 //////// manipulation of data ////
 
 
-function renderTrip(trip){
- return ` <div class='js-trip-section trip-section' id='${trip.id}'>
-
- <button class="js-edit-button edit-button" data-tripId = '${trip.id}'>edit</button>
-
-   <h2 id="destination-title">${trip.destination}</h2>
-   
-   <div class="clockdiv">
-     <div>
-       <span class="days"></span>
-       <div class="smalltext">Days</div>
-     </div>
-
-     <div>
-       <span class="hours"></span>
-       <div class="smalltext">Hours</div>
-     </div>
-
-     <div>
-       <span class="minutes"></span>
-       <div class="smalltext">Minutes</div>
-     </div>
-
-     <div>
-       <span class="seconds"></span>
-       <div class="smalltext">Seconds</div>
-     </div>
-   </div>
-
-   <section id="date-container">
-
-     <section id="left">
-       <p id="date-label">When?</p>
-       <p id="trip date">${trip.when}</p>
-     </section>
-
-     <section id= "right">
-       <p id="date-label">Returning</p>
-       <p id="return date">${trip.lastDayOfTrip}</p>
-     </section>
-
-   </section>
-
-   <div>
-     <p id="details-label">Trip details:</p>
-     <p id="details-box">${trip.tripDetails}</p>
-   </div>
-
-   <button class="js-delete-button delete-button" data-tripId = '${trip.id}'>delete</button>
-
- </div>
- `
-}
 
 
-//Creates trip modal
-function renderAllTrips(responseJson) {
-  $(".js-trips-container").empty();
-  if(responseJson.length > 0) {
-    for(let i = 0; i < responseJson.length; i++) {
-      let trip = responseJson[i];
-      $(".js-trips-container").append(renderTrip(trip));
-       initializeClock(trip);
-    }
-  }
-}
+
 
 ///// countdown clock /////
 

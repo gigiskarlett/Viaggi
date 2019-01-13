@@ -159,6 +159,7 @@ const listensForEditSubmit = (tripID) => {
     editedTrip.when = $('.when').val();
     editedTrip.lastDayOfTrip = $('.lastDayTrip').val();
     editedTrip.tripDetails = $('#description-field').val();
+    editedTrip.id = tripID;
     tripID;
     console.log(editedTrip, tripID)
     submitEditEntry(editedTrip, tripID);

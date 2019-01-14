@@ -94,6 +94,7 @@ app.put('/:id', jsonParser, (req, res) => {
           updated[field] = req.body[field];
         }
     });
+    console.log(updated)
     
     TripPost
         .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true }) //what differs if I have new?

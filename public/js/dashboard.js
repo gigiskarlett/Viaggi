@@ -183,7 +183,6 @@ function geiIdToEditEntry() {
   $('.js-trips-container').on('click', '.js-edit-button', function(event) { 
     event.preventDefault();
     const tripID = $(event.currentTarget)[0].attributes[1].nodeValue;
-    console.log(tripID)
     getOneTrip(tripID);     
     openModal();
   });
@@ -191,7 +190,6 @@ function geiIdToEditEntry() {
 
 // gets trip by id
 function getOneTrip(tripID) {
-  console.log(tripID)
   fetch(`api/trips/${tripID}`, 
   {
     headers: {
@@ -212,10 +210,12 @@ function getOneTrip(tripID) {
 
 // populates modal with trip for edition
 function populateEditModal(responseJson) {
+  $('#js-edit-id').text(`${responseJson.id}`);
   $('.entry-input').val(`${responseJson.destination}`);
   $('.when').val(`${responseJson.when}`);
   $('.lastDayTrip').val(`${responseJson.lastDayOfTrip}`);
   $('#description-field').val(`${responseJson.tripDetails}`);
+  
 };
 
 //opens modal for editing
@@ -227,24 +227,23 @@ function openModal() {
 }
 
 //listens for when user submits edit
-function listensForEditSubmit(tripID) {
+function listensForEditSubmit() {
   $('.js-edit-submit-button').on('click', function(event) {
-    console.log('js-edit-submit-button, click', tripID);
     event.preventDefault();
     let editedTrip = {};    
+    editedTrip.id = $('#js-edit-id').text();
     editedTrip.destination = $('.entry-input').val();
     editedTrip.when = $('.when').val();
     editedTrip.lastDayOfTrip = $('.lastDayTrip').val();
     editedTrip.tripDetails = $('#description-field').val();
-    editedTrip.id = tripID;
-    submitEditEntry(editedTrip, tripID);
+    submitEditEntry(editedTrip);
 
   });
 }
 
 //submits edits trip
-function submitEditEntry(editedTrip, tripID) {
- fetch(`api/trips/${tripID}`, 
+function submitEditEntry(editedTrip, ) {
+ fetch(`api/trips/${editedTrip.id}`, 
  {
   headers: {
     'Accept': 'application/json',

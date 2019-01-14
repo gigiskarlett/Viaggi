@@ -45,10 +45,10 @@
 
         <div class="modal-container js-modal-container" hidden>
             
-            <form class="entry-modal js-entry-modal" aria-live="polite">
+            <form class="entry-modal js-entry-modal"  aria-live="polite">
                 <fieldset>
                     <legend>
-                    <span id="modal-entry-id" class="hidden"></span>
+                    <span id="js-edit-id" hidden></span>
                     </legend>
 
                     <label for="Destination">Destination</label>
@@ -71,7 +71,7 @@
                     <label for="Trip Details">Trip Details</label>
                     <textarea id="description-field" placeholder="Write details about your trip..." name="Trip Details" rows="4" required> </textarea>
                     
-                    <button type="button" class="edit-submit-button js-edit-submit-button" /*data-tripId='${trip.id}'*/ role="button" hidden>EDIT TRIP</button>
+                    <button type="button" class="edit-submit-button js-edit-submit-button" role="button" hidden>EDIT TRIP</button>
                     <button type="button" class="submit-button js-submit-button" role="button">ADD TRIP</button>
                     <button type="button" class="cancel-button js-cancel-button" role="button">Cancel</button>
                 </fieldset>

@@ -19,7 +19,6 @@ function openEntryModal() {
     $('.js-submit-button').show()
     $('.container').addClass('opaque');
     $('.js-modal-container').show();
-
   });
 }
 
@@ -122,7 +121,7 @@ function renderTrip(trip){
      <p id="details-box">${trip.tripDetails}</p>
    </div>
 
-   <button class="js-delete-button delete-button" data-tripId='{trip.id}'>delete</button>
+   <button class="js-delete-button delete-button" data-tripId='${trip.id}'>delete</button>
 
  </div>
  `
@@ -268,13 +267,13 @@ function getIdToDelEntry()  {
     const delTripID = $(event.target)[0].attributes[1].nodeValue;
     if ( !confirm("Are you sure you want to delete this trip?")) return alert("Saying yes to vacation, I like it!")
     deleteEntry(delTripID); 
-    console.log(delTripID)
   });
 }
 
 //deletes trip entry
 function deleteEntry(delTripID) {
   fetch(`/api/trips/${delTripID}`,
+
   {
     headers: {
       'Accept': 'application/json',

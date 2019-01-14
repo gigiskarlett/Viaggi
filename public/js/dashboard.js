@@ -7,6 +7,7 @@ $(() => {
   submitNewTrip();
   geiIdToEditEntry();
   getIdToDelEntry();
+  listensForEditSubmit();
 });
 
 //// Modal functionality /////
@@ -39,8 +40,13 @@ function clearTripModal() {
   $('#description-field').val('');
 }
 
+//unbind event 
+function unbindClick() {
+  $('.js-trip-container').unbind('click', '.js-edit-submit-button', '.js-edit-button');
+}
+
 //hides modal
-const hideModal = () => {
+function hideModal() {
   $('.container').removeClass('opaque');
   $('.js-modal-container').hide();
   clearTripModal()
@@ -71,7 +77,7 @@ function fetchTrips(callback) {
 function renderTrip(trip){
  return ` <div class='js-trip-section trip-section' id='${trip.id}'>
 
- <button class="js-edit-button edit-button" data-tripId = '${trip.id}'>edit</button>
+ <button class="js-edit-button edit-button" data-tripId= '${trip.id}'>edit</button>
 
    <h2 id="destination-title">${trip.destination}</h2>
    
@@ -116,7 +122,7 @@ function renderTrip(trip){
      <p id="details-box">${trip.tripDetails}</p>
    </div>
 
-   <button class="js-delete-button delete-button" data-tripId = '${trip.id}'>delete</button>
+   <button class="js-delete-button delete-button" data-tripId='{trip.id}'>delete</button>
 
  </div>
  `
@@ -152,7 +158,7 @@ function submitNewTrip() {
 }
 
 //posts trip
-const postTrip = (newTrip) => {
+function postTrip(newTrip) {
   fetch('/api/trips',
   {
     headers: {
@@ -174,16 +180,18 @@ const postTrip = (newTrip) => {
 
 //gets id of modal selected for editing
 function geiIdToEditEntry() {
-  $('.js-trips-container').on('click', '.js-edit-button', function(event) {
-    event.preventDefault()
+  $('.js-trips-container').on('click', '.js-edit-button', function(event) { 
+    event.preventDefault();
     const tripID = $(event.currentTarget)[0].attributes[1].nodeValue;
+    console.log(tripID)
     getOneTrip(tripID);     
-    openModal(tripID);
+    openModal();
   });
 }
 
 // gets trip by id
-const getOneTrip = (tripID) => {
+function getOneTrip(tripID) {
+  console.log(tripID)
   fetch(`api/trips/${tripID}`, 
   {
     headers: {
@@ -211,17 +219,17 @@ function populateEditModal(responseJson) {
 };
 
 //opens modal for editing
-function openModal(tripID) {
+function openModal() {
   $('.container').addClass('opaque'); 
   $('.js-submit-button').hide();
   $('.js-edit-submit-button').show();
   $('.js-modal-container').show();
-    listensForEditSubmit(tripID);
 }
 
 //listens for when user submits edit
-const listensForEditSubmit = (tripID) => {
+function listensForEditSubmit(tripID) {
   $('.js-edit-submit-button').on('click', function(event) {
+    console.log('js-edit-submit-button, click', tripID);
     event.preventDefault();
     let editedTrip = {};    
     editedTrip.destination = $('.entry-input').val();
@@ -229,13 +237,13 @@ const listensForEditSubmit = (tripID) => {
     editedTrip.lastDayOfTrip = $('.lastDayTrip').val();
     editedTrip.tripDetails = $('#description-field').val();
     editedTrip.id = tripID;
-    tripID;
     submitEditEntry(editedTrip, tripID);
+
   });
 }
 
 //submits edits trip
-const submitEditEntry = (editedTrip, tripID) => {
+function submitEditEntry(editedTrip, tripID) {
  fetch(`api/trips/${tripID}`, 
  {
   headers: {
@@ -255,7 +263,7 @@ const submitEditEntry = (editedTrip, tripID) => {
 //// deletes entry DEL/:id ////
 
 //listens for when user selects delete
-const getIdToDelEntry = () => {
+function getIdToDelEntry()  {
   $('.js-trips-container').on('click', '.js-delete-button', function(event) {
     event.preventDefault()
     const delTripID = $(event.target)[0].attributes[1].nodeValue;

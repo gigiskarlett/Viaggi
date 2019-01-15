@@ -12,9 +12,9 @@ main {
 }
 
 body {
-    background: #007991;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url("https://images.pexels.com/photos/1536431/pexels-photo-1536431.jpeg");
+    width: 100%;
+    height: auto;
 }
 
 h1 {
@@ -26,7 +26,7 @@ h1 {
 
 h2 {
     text-align: center;
-    color: black;
+    color: white;
     font-size: 30px;
     margin-bottom: 4%;
 }
@@ -119,7 +119,7 @@ input[type=text], input[type=password] {
 
 #cta {
     font-size: 20px;
-    color: black;
+    color: white;
     font-weight: bolder;
 }
 
@@ -156,7 +156,6 @@ input[type=text], input[type=password] {
 
 
     h1 {
-        left: 120px;
         position: relative;
     }
 

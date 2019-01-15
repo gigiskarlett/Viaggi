@@ -41,7 +41,7 @@ fetch('api/auth/login',
     .then(data => {
         localStorage.setItem('authToken', data.authToken);   
         //redirect 
-        res.redirect('/dashboard.html')
+        window.location.href = "/dashboard.html";
     })
     .catch($('.js-login-error-status').text(response.message));
 }

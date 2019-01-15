@@ -9,6 +9,7 @@
         "signup",
         "smalltext",
         "timeinterval",
+        "topnav",
         "updateable"
     ]
 }

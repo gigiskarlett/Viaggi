@@ -12,7 +12,7 @@ $(() => {
 
 //// Nav toggle for mobile ////
 
-function showMobileNav() {
+function showNav() {
   const mobileNav = document.getElementById("myLinks");
   if (mobileNav.style.display === "block") {
     mobileNav.style.display = "none";

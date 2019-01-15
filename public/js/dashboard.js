@@ -318,10 +318,6 @@ function deleteEntry(delTripID) {
 //////// manipulation of data ////
 
 
-
-
-
-
 ///// countdown clock /////
 
 //gets remaining time to date

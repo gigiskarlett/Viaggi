@@ -29,15 +29,12 @@ function submitUser(newUser) {
         body: JSON.stringify(newUser)
     })
     .then(response => {
-        return response.json()
-    })
-    .then(response => {
-        if (response !== 201) {
+        if (response.status !== 201) {
             $('.js-signup-status').text(response.location +":   "+ response.message);
-            }
-            else {   
+        }
+        else {   
              $('.js-signup-status').text('Signup successful. Please log in.')
-            }
+        }
         
     })
     .catch(error => console.log('Bad request'));

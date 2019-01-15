@@ -30,7 +30,7 @@ nav {
 
 
 a:last-child {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 
@@ -219,13 +219,14 @@ nav a {
 #destination-title {
     color: black;
     font-size: 30px;
+    text-align: center;
 }
 
 .trip-section {
     background-color: white;
     padding: 10px;
     border-radius: 5px;
-    width: 70%;
+    width: 90%;
     margin: auto;
     margin-bottom: 30px;
 }
@@ -233,29 +234,32 @@ nav a {
 .clockdiv{
     font-family: sans-serif;
     color: #fff;
-    display: block;
+    display: inline-block;
     font-weight: 100;
     text-align: center;
     font-size: 30px;
+    display: table;
+    margin: 3px auto 3px auto;
 }
 
 .clockdiv > div{
-    padding: 10px;
+    padding: 5px;
     border-radius: 3px;
     background: black;
-    display: inline-block;
+    display: table-cell;
 }
 
 .clockdiv div > span{
-    padding: 15px;
-    border-radius: 3px;
-    background: #00BF96;
+    background: turquoise;
     display: inline-block;
+    color: white;
+    font-size: 25px;
+    padding: 10px;
 }
 
 .smalltext{
-    padding-top: 5px;
-    font-size: 16px;
+    font-size: 12px;
+    color: white;
 }
 
 .opaque {
@@ -267,6 +271,12 @@ nav a {
     padding: 20px;
     color: black;
 }
+
+.container {
+    width: 90%;
+    margin: 10px;   
+}
+
 
 @media screen and (max-width: 600px){
      nav {
@@ -374,7 +384,6 @@ nav a {
     }
 
     .trip-section {
-
         padding: 10px;
         border-radius: 5px;
         width: 70%;
@@ -387,32 +396,30 @@ nav a {
 
     .clockdiv{
         font-family: sans-serif;
+        color: #fff;
         display: block;
         text-align: center;
         font-size: 30px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin: 10px 0 10px 0;
     }
 
     .clockdiv > div{
         padding: 10px;
         border-radius: 3px;
         display: inline-block;
+        background: black;
     }
 
     .clockdiv div > span{
         padding: 15px;
         border-radius: 3px;
+        background: #00BF96;
         display: inline-block;
     }
 
     .smalltext{
         padding-top: 5px;
         font-size: 16px;
-    }
-
-    .opaque {
-        opacity: .5;
     }
 
 }

@@ -19,6 +19,7 @@ h1 {
     flex: 1 0 auto; 
     text-align: center;
     font-size: 50px;
+    color: white;
 }
 
 .mobile-container {
@@ -62,11 +63,6 @@ h1 {
   
 .active {
     background-color: #4CAF50;
-    color: white;
-}
-
-
-h1 {
     color: white;
 }
 

@@ -10,6 +10,17 @@ $(() => {
   listensForEditSubmit();
 });
 
+//// Nav toggle for mobile ////
+
+function showMobileNav() {
+  const mobileNav = document.getElementById("myLinks");
+  if (mobileNav.style.display === "block") {
+    mobileNav.style.display = "none";
+  } else {
+    mobileNav.style.display = "block";
+  }
+}
+
 //// Modal functionality /////
 
 //opens modal when button is clicked

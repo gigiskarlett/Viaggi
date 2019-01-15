@@ -36,33 +36,34 @@
         </div>
 
         <div class="container">   
-            <form id="signup-form" action="/signup/" method ="post">
+            <form class="signup-form js-submit-form" action="#" >
                 <fieldset>
                     <legend><p id="cta">SIGN UP</p></legend>
                     <br>
 
                     <label for="username"></label>
-                    <input type="text" placeholder="username" name="username" required>
+                    <input class="js-username" type="text" placeholder="username" name="username" required>
                 
                     <label for="Full-Name"></label>
-                    <input type="text" placeholder="Full name" name="full-name" required>
+                    <input class="js-full-name" type="text" placeholder="Full name" name="full-name" required>
                 
                     <label for="password"></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <input class= "js-password" type="password" placeholder="Enter Password" name="password" required>
                 
-                    <label for="password-repeat"></label>
-                    <input type="password" placeholder="Confirm Password" name="password-repeat" required>
+                    <!-- <label for="password-repeat"></label>
+                    <input type="password" placeholder="Confirm Password" name="password-repeat" required> -->
 
                     <button type="submit" class="sign-up-btn js-signup-button">Sign up</button>
-
-                </fieldset>    
-
-                <div id="container-login">
-                    <p>Already have an account?</p> 
-                    <p id="login"><a href="login.html">Log in</a></p>
-                </div>
+                </fieldset>
             </form>
         </div>
+
+        <div id="container-login">
+            <p class="signup-status js-signup-status"></p>
+            <p>Already have an account?</p> 
+            <p id="login"><a href="login.html">Log in</a></p>
+        </div>
+        
     </main>
     <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/js/register.js"></script>

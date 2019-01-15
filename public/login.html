@@ -36,27 +36,28 @@
 
             <div class="container">
 
-                <form class="login-form js-login-form" action="/login/" method ="post">
+                <form class="login-form js-login-form" action="#" >
 
                     <fieldset>
                         <legend><p id="cta">LOG IN</p></legend>
                         <br>
 
                         <label for="username"></label>
-                        <input type="text" placeholder="username" name="username" required>
+                        <input class="js-username" type="text" placeholder="username" name="username" required>
     
                         <label for="password"></label>
-                        <input type="password" placeholder="Enter Password" name="password" required>
+                        <input class="js-password" type="password" placeholder="Enter Password" name="password" required>
         
                         <button type="submit" class="login-btn js-login-button">Log in</button>
                     </fieldset>    
-
-                    <div id="container-signup">
-                        <p>Don't have an account yet?</p> 
-                        <p id="signup"><a href="register.html">Sign Up</a></p>
-                    </div>
                     
                 </form>
+            </div>
+
+            <div id="container-signup">
+                <p class="login-error-status js-login-error-status"></p>
+                <p>Don't have an account yet?</p> 
+                <p id="signup"><a href="register.html">Sign Up</a></p>
             </div>
 
         </main>

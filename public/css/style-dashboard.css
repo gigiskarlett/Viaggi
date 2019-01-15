@@ -10,9 +10,9 @@ main {
 }
 
 body {
-    background: #007991;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url("https://images.pexels.com/photos/1536431/pexels-photo-1536431.jpeg");
+    width: 100%;
+    height: auto;
 }
 
 h1 {
@@ -269,7 +269,7 @@ nav a {
 .instructions {
     text-align: center;
     padding: 20px;
-    color: black;
+    color: white;
 }
 
 .container {
@@ -285,6 +285,10 @@ nav a {
 }
 
 @media (min-width: 780px) {   
+
+    body {
+        background: url(https://images.pexels.com/photos/1536431/pexels-photo-1536431.jpeg);
+    }
 
     a:last-child {
         margin-right: 13px;
@@ -413,7 +417,7 @@ nav a {
     .clockdiv div > span{
         padding: 15px;
         border-radius: 3px;
-        background: #00BF96;
+        background: rgb(0, 191, 166);
         display: inline-block;
     }
 

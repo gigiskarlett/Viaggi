@@ -145,9 +145,10 @@ function renderAllTrips(responseJson) {
 
 ////     New trip POST    ////
 
+
 //listens for submit of new trip
 function submitNewTrip() {
-  $('.js-entry-modal').on('click', '.js-submit-button', function(event){
+  $('.js-entry-modal').on('submit', function(event){
     event.preventDefault();
     let newTrip = {};
     newTrip.destination = $('.entry-input').val();

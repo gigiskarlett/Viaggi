@@ -262,6 +262,12 @@ nav a {
     opacity: .5;
 }
 
+.instructions {
+    text-align: center;
+    padding: 20px;
+    color: black;
+}
+
 @media screen and (max-width: 600px){
      nav {
         flex-direction: column;

@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZLbYQlvmSCeBKBIObb9Bkx1iJgnb1UNMdqynyc12Hxco1ZRLVLytG76/oYwAHARzo5eZ/QjSWaJPPtwQUaVMfFHNvsRrpUvlq7tLFE5Qg4GIBZMvGA3J0sLWk9hRf7ajKVS2rFr1Sao8+qRWdxbzBGu2Xc/Nf/p5o72lwQFjnRjEcgO3HShpvzpaK3Q9DSEYaZZ/pB6SVz1AZpr7IGRziEAEpQsmUQrJcRSY+VwU66fpyc7KOIl5LvY6tFthBsULbc+MF/R5rz0PiuNKb/VnFcYIOMlp/s+O4OrQkgxvZJdhsduis/wOzWhmFzAxYzhX+6qOVbxSar4TqcMkj5C7qFH2klDPm/cIgIqthFl/2Mdl1wUwO9ul0wXpW0se7hLO2IdNTBG0MBSXYtinREhSRIgWZMvnrGSIQ8uhRFv7K3fVds21t2KX3b7mFRdnBCtNrREoA0a8Xj2A8UruuvD5ArXXfu/JF9ijZLIutYccgUT4NOJ8STy0OgRskvpNhpF2DMo8+TPvZhkdpgHI0B0MsUwDHL20iZh48gqPjmdjHAflw3UdhKlFMFB+5qfWN6uz+UujABduQUcjLAupXckqR7SvS92YyEapHb1Pbiw9+CogV9VphCGGrJ8WiULMRcOnZocZUOAh+1FUzMUtOdL+6UKxYwlzw7a9ejAYcPRw6rA=
+  app: viagi
+  on:
+    repo: gigiskarlett/Viaggi

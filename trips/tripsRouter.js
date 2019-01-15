@@ -52,7 +52,7 @@ app.post('/', jsonParser, (req, res) => {
     }
 
     TripPost
-    .create({
+    .create({ 
         destination: req.body.destination,
         when: req.body.when,
         lastDayOfTrip: req.body.lastDayOfTrip,

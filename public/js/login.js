@@ -47,3 +47,5 @@ fetch('api/auth/login',
 }
 
 //I need to redirect in strategies****
+
+//https://stackoverflow.com/questions/11570301/res-redirect-from-post

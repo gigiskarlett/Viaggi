@@ -21,23 +21,48 @@ h1 {
     font-size: 50px;
 }
 
-nav {
-    display: flex;
+.mobile-container {
+    max-width: 480px;
+    margin: auto;
     background-color: black;
-    width: 100%;
-    align-items: center;
+    height: 500px;
+    color: white;
+    border-radius: 10px;
 }
-
-
-a:last-child {
-    padding-bottom: 5px;
+  
+.topnav {
+    overflow: hidden;
+    background-color: black;
+    position: relative;
 }
-
-
-nav a {
-    padding-top: 2%;
-    padding-right: 10px;
+  
+.topnav #myLinks {
+    display: none;
+}
+  
+.topnav a {
+    text-align: center;
+    color: white;
+    padding: 14px 16px;
     text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+  
+.topnav a.icon {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+  
+.topnav a:hover {
+    background-color: #3d3e3f;
+}
+  
+.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
 
@@ -290,18 +315,7 @@ nav a {
         background: url(https://images.pexels.com/photos/1536431/pexels-photo-1536431.jpeg);
     }
 
-    a:last-child {
-        margin-right: 13px;
-        padding-bottom: 0; 
-    }
-
-    nav a {
-        padding-left: 1px;
-        padding-bottom: 0;
-    }
-
     h1 {
-        left: 120px;
         position: relative;
     }
 

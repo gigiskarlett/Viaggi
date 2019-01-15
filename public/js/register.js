@@ -1,7 +1,7 @@
 //init function
 $(() => {
     newUserEntry() 
-})
+});
 
 //listens for submit of new user 
 function newUserEntry() {

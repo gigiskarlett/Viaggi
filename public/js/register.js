@@ -33,7 +33,7 @@ function submitUser(newUser) {
             $('.js-signup-status').text(response.location +":   "+ response.message);
         }
         else {   
-             $('.js-signup-status').text('Signup successful. Please log in.')
+            window.location.href = "/login.html";
         }
         
     })

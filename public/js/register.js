@@ -28,6 +28,7 @@ function submitUser(newUser) {
         method: "POST",
         body: JSON.stringify(newUser)
     })
+    .then(response => response.json())
     .then(response => {
         if (response.status !== 201) {
             $('.js-signup-status').text(response.location +":   "+ response.message);

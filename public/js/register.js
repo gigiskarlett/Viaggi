@@ -1,3 +1,4 @@
+//init function
 $(() => {
     newUserEntry() 
 })

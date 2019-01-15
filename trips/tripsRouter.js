@@ -12,10 +12,8 @@ const jsonParser = bodyParser.json();
 const app = express.Router();
 
 
-// how to set this up?
-// app.get('/trips/protected', jwtAuth, (req, res) => {
-//   return res.json({
-//     data: 'rosebud'
+// Do I need to add this to my get router?
+// app.get('/protected', jwtAuth, (req, res) => {
 //   });
 // });
 

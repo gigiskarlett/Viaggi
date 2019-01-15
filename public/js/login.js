@@ -3,14 +3,6 @@ $(() => {
     loginEntry();
 });
 
-//checks for authentication 
-function checkForJTW() {
-    let authToken = localStorage.getItem('authToken')
-    if (authToken) {
-      showDashboard();
-    }
-}
-
 //listens for submit of login
 function loginEntry() {
     $('.js-login-form').on('submit', function(event) {
@@ -50,7 +42,3 @@ fetch('api/auth/login',
         console.log(err)
     });
 }
-
-//I need to redirect in strategies****
-
-//https://stackoverflow.com/questions/11570301/res-redirect-from-post

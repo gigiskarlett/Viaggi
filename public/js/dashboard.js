@@ -53,18 +53,25 @@ function hideModal() {
 
 //fetches all trips
 function fetchTrips(callback) {
-  fetch("http://localhost:8080/api/trips")
+  fetch('/api/trips',
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+    },
+    method: "GET"
+  })
   .then(response => response.json())
   .then(responseJson => {
       return responseJson
   })
   .then(responseJson =>  {
     renderAllTrips(responseJson)
-   
   }) 
   .catch(err => {
-    $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.");
-  });
+    $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.")
+  })
 }
 
 //// renders trip section ////
@@ -198,6 +205,7 @@ function getOneTrip(tripID) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+      //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     },
     method: "GET"
     })
@@ -251,6 +259,7 @@ function submitEditEntry(editedTrip, ) {
   headers: {
     'Accept': 'application/json',
     'Content-Type' : 'application/json',
+    //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
   },
   method: "PUT",
   body: JSON.stringify(editedTrip)
@@ -282,6 +291,7 @@ function deleteEntry(delTripID) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+      //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
     },
     method: "DELETE",
     body: JSON.stringify(delTripID)

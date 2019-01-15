@@ -39,10 +39,6 @@ function clearTripModal() {
   $('#description-field').val('');
 }
 
-//unbind event 
-function unbindClick() {
-  $('.js-trip-container').unbind('click', '.js-edit-submit-button', '.js-edit-button');
-}
 
 //hides modal
 function hideModal() {
@@ -60,7 +56,6 @@ function fetchTrips(callback) {
   fetch("http://localhost:8080/api/trips")
   .then(response => response.json())
   .then(responseJson => {
-      console.log(responseJson)
       return responseJson
   })
   .then(responseJson =>  {
@@ -72,7 +67,13 @@ function fetchTrips(callback) {
   });
 }
 
-// renders trip section //
+//// renders trip section ////
+
+//instructions render when user has no trips
+function firstTripInstructions() {
+  return `<h2 class="instructions">Add your first trip by clicking on that yellow button!</h2>`
+}
+
 function renderTrip(trip){
  return ` <div class='js-trip-section trip-section' id='${trip.id}'>
 
@@ -136,6 +137,8 @@ function renderAllTrips(responseJson) {
       $(".js-trips-container").append(renderTrip(trip));
        initializeClock(trip);
     }
+  } else {
+    $(".js-trips-container").append(firstTripInstructions());
   }
 }
 

@@ -28,15 +28,17 @@ function submitUser(newUser) {
         method: "POST",
         body: JSON.stringify(newUser)
     })
-    .then(response => response.json())
     .then(response => {
-        if (response.status !== 201) {
-            $('.js-signup-status').text(response.location +":   "+ response.message);
+        if (response.status === 201) {
+            window.location.href = "/login.html";  
         }
         else {   
-            window.location.href = "/login.html";
+           return response.json()
         }
         
+    })
+    .then(response => {
+      $('.js-signup-status').text(response.location +":   "+ response.message);
     })
     .catch(error => console.log('Bad request'));
 };

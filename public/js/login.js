@@ -35,15 +35,20 @@ fetch('api/auth/login',
         method: "POST",
         body: JSON.stringify(user)
     })
-    .then(response => {
-        return response.json()
+    .then(response =>{
+         if (response.status === 401) {
+            $('.js-login-error-status').text("Incorrect username or password")
+        }else{
+            return response.json()
+        }
     })
     .then(data => {
         localStorage.setItem('authToken', data.authToken);   
-        //redirect 
         window.location.href = "/dashboard.html";
     })
-    .catch($('.js-login-error-status').text(response.message));
+    .catch(err=>{
+        console.log(err)
+    });
 }
 
 //I need to redirect in strategies****

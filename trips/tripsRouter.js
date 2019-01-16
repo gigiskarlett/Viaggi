@@ -4,18 +4,11 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const {TripPost} = require('./models');
-// const { JWT_SECRET } = require('./config')
 const jsonParser = bodyParser.json();
-
 const passport = require('passport')
-// const jwtAuth = passport.authenticate('jwt', {session: false});
-
-// const jwt = require('jwt-simple');
-
 const app = express.Router();
-
+const jwtAuth = passport.authenticate('jwt', { session: false });
 
 
 // // Do I need to add this to my get router?
@@ -23,7 +16,7 @@ const app = express.Router();
 //     return 'this is my secret';
 // });
 
-app.get('/', (req, res) => {
+app.get('/', jwtAuth, (req, res) => {
     TripPost
     .find()
     .sort({when: 1})
@@ -36,7 +29,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/:id', (req, res) => {
+app.get('/:id', jwtAuth, (req, res) => {
     TripPost
     .findById(req.params.id)
     .then(trips => res.json(trips.serialize()))
@@ -46,7 +39,7 @@ app.get('/:id', (req, res) => {
     });
 });
 
-app.post('/', jsonParser, (req, res) => {
+app.post('/', jwtAuth, jsonParser, (req, res) => {
     const requiredFields = ['destination', 'when', 'lastDayOfTrip', 'tripDetails'];
     for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
@@ -73,7 +66,7 @@ app.post('/', jsonParser, (req, res) => {
 });
 
 
-app.delete('/:id', (req, res) => {
+app.delete('/:id', jwtAuth, (req, res) => {
     TripPost
     .findByIdAndRemove(req.params.id)
     .then(() => {
@@ -84,7 +77,7 @@ app.delete('/:id', (req, res) => {
 });
 
 
-app.put('/:id', jsonParser, (req, res) => {
+app.put('/:id', jwtAuth, jsonParser, (req, res) => {
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         res.status(500).json({
           message: 'Request path id and request body id values must match'
@@ -106,9 +99,6 @@ app.put('/:id', jsonParser, (req, res) => {
         .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 }); 
 
-app.use('*', function (req, res) {
-    res.status(404).json({message : 'Not Found'});
-});
 
 
 

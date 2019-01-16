@@ -1,6 +1,11 @@
+var dayInMilliseconds = 1000 * 60 * 60 * 24;
+let state = {
+  token :""
+}
 
 //binds event handlers
 $(() => {
+  getAuthToken()
   fetchTrips();  
   openEntryModal();
   closeModal();
@@ -9,6 +14,49 @@ $(() => {
   getIdToDelEntry();
   listensForEditSubmit();
 });
+
+function getAuthToken(){
+  state.token = localStorage.getItem("authToken");
+  setInterval( refreshToken, dayInMilliseconds );
+  
+  if(state.token){
+    refreshToken()
+  } else {
+     window.location.href = "/";
+  }
+}
+
+
+
+function refreshToken() {
+  fetch('/api/auth/refresh',
+      {   
+        method: "POST",
+        headers: {
+           'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          'Authorization': `Bearer ${state.token}`
+        }   
+      })
+      .then(response =>{
+        console.log("HERE", response)
+
+           if (response.status === 401) {
+            clearAuth()
+          }else{
+              return response.json()
+          }
+      })
+      .then(data => {
+          localStorage.setItem('authToken', data.authToken);   
+     
+      })
+      .catch(err=>{
+          console.log(err)
+      });
+  }
+  
+
 
 //// Nav toggle for mobile ////
 
@@ -69,7 +117,7 @@ function fetchTrips(callback) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      'Authorization': `Bearer ${state.token}`
     },
     method: "GET"
   })
@@ -185,7 +233,7 @@ function postTrip(newTrip) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      'Authorization': `Bearer ${state.token}`
     },
     method: "POST",
     body: JSON.stringify(newTrip)
@@ -216,7 +264,7 @@ function getOneTrip(tripID) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      'Authorization': `Bearer ${state.token}`
     },
     method: "GET"
     })
@@ -302,7 +350,7 @@ function deleteEntry(delTripID) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      'Authorization': `Bearer ${state.token}`
     },
     method: "DELETE",
     body: JSON.stringify(delTripID)
@@ -317,13 +365,16 @@ function deleteEntry(delTripID) {
 
 //it signs users out
 function signOutUser() {
-  $('#myLinks').on('click', '.js-sign-out-link', function(event) {
+  $('.js-sign-out-link').on('click', function(event) {
     event.preventDefault();
-    localStorage.clear();
-    location.reload();
+   clearAuth()
   })
 }
 
+function clearAuth(){
+  localStorage.setItem("authToken", "");
+  window.location.href = "/";
+}
 //////// manipulation of data ////
 
 

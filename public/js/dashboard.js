@@ -141,6 +141,14 @@ function firstTripInstructions() {
 }
 
 function renderTrip(trip){
+  let startingDate= new Date(trip.when);
+  let newStartingDate= startingDate.toString().split(" ");
+  let startingFinalString= newStartingDate[0]+" "+newStartingDate[1]+" "+newStartingDate[2]+" "+newStartingDate[3];
+
+  let endingDate= new Date(trip.when);
+  let newEndingDate= endingDate.toString().split(" ");
+  let endingFinalString= newEndingDate[0]+" "+newEndingDate[1]+" "+newEndingDate[2]+" "+newEndingDate[3];
+
  return ` <div class='js-trip-section trip-section' id='${trip.id}'>
 
  <button class="js-edit-button edit-button" data-tripId= '${trip.id}'>edit</button>
@@ -173,12 +181,12 @@ function renderTrip(trip){
 
      <section id="left">
        <p id="date-label">When?</p>
-       <p id="trip date">${trip.when}</p>
+       <p id="trip date">${startingFinalString}</p>
      </section>
 
      <section id= "right">
        <p id="date-label">Returning</p>
-       <p id="return date">${trip.lastDayOfTrip}</p>
+       <p id="return date">${endingFinalString}</p>
      </section>
 
    </section>
@@ -192,6 +200,10 @@ function renderTrip(trip){
 
  </div>
  `
+}
+
+function convertDate() {
+
 }
 
 // Creates trip section and adds the clock //

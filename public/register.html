@@ -42,18 +42,19 @@
                         <br>
 
                         <label for="username"hidden>username</label>
-                            <input class="js-username" type="text" placeholder="username" name="username" required>
+                        <input class="js-username" type="text" placeholder="username" name="username" required>
                         
 
                         <label for="Full-Name"hidden>full name</label>
-                            <input class="js-full-name" type="text" placeholder="Full name" name="full-name" required>
+                        <input class="js-full-name" type="text" placeholder="Full name" name="full-name" required>
                         
 
                         <label for="password"hidden>password</label>
-                            <input class= "js-password" type="password" placeholder="Enter Password" name="password" required>
+                        <input id="js-password" class= "js-password" type="password" placeholder="Enter Password" name="password" required>
 
-                        <!-- <label for="password-repeat"></label>
-                        <input type="password" placeholder="Confirm Password" name="password-repeat" required> -->
+                        <label for="password-repeat" hidden>password</label>
+                        <input id="js-confirm-password" type="password" placeholder="Confirm Password" name="password-repeat" required>
+                        <span id="js-error-message"></span>
 
                         <button type="submit" class="sign-up-btn js-signup-button">Sign up</button>
                     </fieldset>

@@ -1,92 +1,93 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>My Trips</title>
+        <title>My Trips</title>
 
-    <!--responsive viewport tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--responsive viewport tag-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--Metadata-->
-    <meta name="Viaggi" content="organize your travel and let us countdown the days for you">
+        <!--Metadata-->
+        <meta name="Describe" content="Organize your travel with VIAGGI and let us countdown the days for you.">
 
-    <!--Google font-->
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+        <!--Google font-->
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 
-    <!--Stylesheets-->
-     <link rel="stylesheet" type="text/css" media="screen" href="/css/style-dashboard.css" />
+        <!--Stylesheets-->
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/style-dashboard.css" />
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <nav role= navigation" class="topnav">
-        <h1>VIAGGI</h1>
-        <div id="myLinks">
-            <a href="dashboard.html">My Trips</a>
-            <a href="#">Sign Out</a>
-        </div>
-        <a href="#" class="icon" onclick="showNav()">
-            <i class="fa fa-bars"> &#9776</i>
-        </a>
-    </nav>
-
-
-    <main role="main" aria-live="polite">
-
-        <div id="button-container">
-            <button type="button" class="create-btn js-create-button">ADD TRIP</button>
-        </div>  
-
-
-        <div class="container"> 
-            <div class="js-trips-container">
-                <section class="js-trips"></section>
+        <nav role= navigation" class="topnav">
+            <h1>VIAGGI</h1>
+            <div id="myLinks">
+                <a href="dashboard.html">My Trips</a>
+                <a href="#">Sign Out</a>
             </div>
-        </div>
+            <a href="#" class="icon" onclick="showNav()">
+                <i class="fa fa-bars"> &#9776</i>
+            </a>
+        </nav>
 
-        <div class="modal-container js-modal-container" hidden>
-            
-            <form class="entry-modal js-entry-modal"  aria-live="polite">
-                <fieldset>
-                    <legend>
-                    <span id="js-edit-id" hidden></span>
-                    </legend>
 
-                    <label for="Destination">Destination</label>
-                    <input class="entry-input " placeholder="Where will you be going?" type="text" id="destination-field" name="Destination" required>
-                    
-                    <div id="date-container">
+        <main role="main" aria-live="polite">
 
-                        <div id="left">
-                            <label for="When?">When?</label>
-                            <input class="date input when" type="date" id="When-field" name="When" min="2019-01-14" max="2025-12-31"  required/>
+            <div id="button-container">
+                <button type="button" class="create-btn js-create-button">ADD TRIP</button>
+            </div>  
+
+
+            <div class="container"> 
+                <div class="js-trips-container">
+                    <section class="js-trips"></section>
+                </div>
+            </div>
+
+            <div class="modal-container js-modal-container" hidden>
+                
+                <form class="entry-modal js-entry-modal"  aria-live="polite">
+                    <fieldset>
+                        <legend>
+                        <span id="js-edit-id" hidden></span>
+                        </legend>
+
+                        <label for="Destination">Destination</label>
+                        <input class="entry-input " placeholder="Where will you be going?" type="text" id="destination-field" name="Destination" required>
+                        
+                        <div id="date-container">
+
+                            <div id="left">
+                                <label for="When?">When?</label>
+                                <input class="date input when" type="date" id="When-field" name="When" min="2019-01-14" max="2025-12-31"  required/>
+                            </div>
+
+                            <div id= "right">
+                                <label for="lastDayTrip">Last day of trip?</label>
+                                <input class= "date input lastDayTrip" type="date" id="last-day-field" name="lastDayTrip" min="2019-01-14" max="2025-12-31" required/>
+                            </div>
+
                         </div>
 
-                        <div id= "right">
-                            <label for="lastDayTrip">Last day of trip?</label>
-                            <input class= "date input lastDayTrip" type="date" id="last-day-field" name="lastDayTrip" min="2019-01-14" max="2025-12-31" required/>
-                        </div>
+                        <label for="tripDetails">Trip Details</label>
+                        <textarea id="description-field" placeholder="Write details about your trip..." name="tripDetails" rows="4" required> </textarea>
+                        
+                        <button type="submit" class="edit-submit-button js-edit-submit-button" hidden>EDIT TRIP</button>
+                        <button type="submit" class="submit-button js-submit-button">ADD TRIP</button>
+                        <button type="submit" class="cancel-button js-cancel-button">Cancel</button>
+                    </fieldset>
+                </form>
+            </div>    
 
-                    </div>
+        </main>
 
-                    <label for="tripDetails">Trip Details</label>
-                    <textarea id="description-field" placeholder="Write details about your trip..." name="tripDetails" rows="4" required> </textarea>
-                    
-                    <button type="submit" class="edit-submit-button js-edit-submit-button" hidden>EDIT TRIP</button>
-                    <button type="submit" class="submit-button js-submit-button">ADD TRIP</button>
-                    <button type="submit" class="cancel-button js-cancel-button">Cancel</button>
-                </fieldset>
-            </form>
-        </div>    
-
-    </main>
-
-    <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="/js/dashboard.js"></script>
-</body>
+        <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="/js/dashboard.js"></script>
+    </body>
 
 </html>

@@ -246,7 +246,7 @@ describe('/api/user', function () {
           .post('/api/users')
           .send({
             username,
-            password: '123456',
+            password: '12345',
             fullName
           })
           .then(() =>

@@ -12,10 +12,10 @@ const jsonParser = bodyParser.json();
 const app = express.Router();
 
 
-// Do I need to add this to my get router?
-app.get('/protected', jwtAuth, (req, res) => {
-    return 'this is my secret';
-});
+// // Do I need to add this to my get router?
+// app.get('/protected', jwtAuth, (req, res) => {
+//     return 'this is my secret';
+// });
 
 app.get('/', (req, res) => {
     TripPost

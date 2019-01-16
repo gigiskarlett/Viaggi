@@ -124,6 +124,7 @@ function fetchTrips(callback) {
       return responseJson
   })
   .then(responseJson =>  {
+   
     renderAllTrips(responseJson)
   }) 
   .catch(err => {
@@ -231,6 +232,7 @@ function submitNewTrip() {
     newTrip.when = $('.when').val();
     newTrip.lastDayOfTrip = $('.lastDayTrip').val();
     newTrip.tripDetails = $('#description-field').val();
+  
     postTrip(newTrip);
     hideModal();
   }); 
@@ -283,6 +285,7 @@ function getOneTrip(tripID) {
     })
     .then(responseJson => {
       clearTripModal();
+    
       populateEditModal(responseJson); 
     })
     .catch(error => console.log('Bad request'));
@@ -392,7 +395,15 @@ function clearAuth(){
 
 //gets remaining time to date
 function getTimeRemaining(startTime) {
-  let t = Date.parse(startTime) - Date.parse(new Date());
+  console.log(startTime)
+
+
+  let now = new Date()
+
+   // TODO add hours for timezone to now.  
+
+  let t = new Date(startTime) - now;
+
   return {
     total: t,
     days: Math.floor(t / (1000 * 60 * 60 * 24)),
@@ -405,8 +416,6 @@ function getTimeRemaining(startTime) {
 //initializes clock
 function initializeClock(trip) {
 
-  let startTime = new Date(Date.parse(new Date(trip.when)))  
-
   let clock = $(`#${trip.id}`).find(".clockdiv");
   let daysSpan = clock.find('.days');
   let hoursSpan = clock.find('.hours');
@@ -414,7 +423,7 @@ function initializeClock(trip) {
   let secondsSpan = clock.find('.seconds');
 
   function updateClock() {
-    var t = getTimeRemaining(startTime);
+    var t = getTimeRemaining(trip.when);
 
     daysSpan.html(t.days);
     hoursSpan.html(('0' + t.hours).slice(-2));

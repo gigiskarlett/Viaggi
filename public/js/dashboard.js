@@ -315,6 +315,15 @@ function deleteEntry(delTripID) {
   .catch(error => console.log('Bad request'));
 }
 
+//it signs users out
+function signOutUser() {
+  $('#myLinks').on('click', '.js-sign-out-link', function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    location.reload();
+  })
+}
+
 //////// manipulation of data ////
 
 

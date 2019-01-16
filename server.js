@@ -20,6 +20,7 @@ const app = express();
 // Logging
 app.use(morgan('common'));
 
+//serves static
 app.use(express.static("public"));
 
 // CORS

@@ -17,6 +17,11 @@ body {
     height: auto;
 }
 
+#js-error-message {
+    color: greenyellow;
+    text-align: center;
+}
+
 a, p {
     color: white;
 }

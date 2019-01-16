@@ -7,7 +7,8 @@ const tripPostSchema = mongoose.Schema({
     destination: {type: String, required: true},
     when: {type: Date, required: true },
     lastDayOfTrip: {type: Date, required: true},
-    tripDetails: {type: String, required: true}
+    tripDetails: {type: String, required: true},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 });
 
 tripPostSchema.methods.serialize = function() {

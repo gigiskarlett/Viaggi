@@ -39,8 +39,6 @@ function refreshToken() {
         }   
       })
       .then(response =>{
-        console.log("HERE", response)
-
            if (response.status === 401) {
             clearAuth()
           }else{

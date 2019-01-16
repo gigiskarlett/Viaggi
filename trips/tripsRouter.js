@@ -11,16 +11,16 @@ const app = express.Router();
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 
-// // Do I need to add this to my get router?
-// app.get('/protected', jwtAuth, (req, res) => {
-//     return 'this is my secret';
-// });
-
 app.get('/', jwtAuth, (req, res) => {
     TripPost
-    .find()
-    .sort({when: 1})
+    .find({
+        user: req.user.id
+    })
+    .sort({
+        when: 1
+    })
     .then(trips => {
+        console.log(trips)
         res.json(trips.map(trip => trip.serialize()));
     })
     .catch(err => {
@@ -55,7 +55,8 @@ app.post('/', jwtAuth, jsonParser, (req, res) => {
         destination: req.body.destination,
         when: req.body.when,
         lastDayOfTrip: req.body.lastDayOfTrip,
-        tripDetails: req.body.tripDetails
+        tripDetails: req.body.tripDetails,
+        user: req.user.id
     })
     .then(tripPost => res.status(201).json(tripPost.serialize()))
     .catch(err => {

@@ -145,7 +145,7 @@ describe('Protected endpoint', function () {
         .then(res => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('object');
-          expect(res.body.data).to.equal('rosebud');
+          expect(res.body.data).to.equal('I see you');
         });
     });
   });

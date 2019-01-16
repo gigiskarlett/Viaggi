@@ -159,7 +159,7 @@ describe('/api/user', function () {
             expect(res.body.message).to.equal(
               'Incorrect field type: expected string'
             );
-            expect(res.body.location).to.equal('firstName');
+            expect(res.body.location).to.equal('fullName');
           });
       });
       it('Should reject users with non-trimmed username', function () {
@@ -261,7 +261,7 @@ describe('/api/user', function () {
             expect(res).to.have.status(422);
             expect(res.body.reason).to.equal('ValidationError');
             expect(res.body.message).to.equal(
-              'Must be at least 10 characters long'
+              'Must be at least 6 characters long'
             );
             expect(res.body.location).to.equal('password');
           });
@@ -304,8 +304,7 @@ describe('/api/user', function () {
             chai.request(app).post('/api/users').send({
               username,
               password,
-              firstName,
-              lastName
+              fullName
             })
           )
           .then(() =>
@@ -339,8 +338,7 @@ describe('/api/user', function () {
             expect(res.body).to.be.an('object');
             expect(res.body).to.have.keys(
               'username',
-              'firstName',
-              'lastName'
+              'fullName'
             );
             expect(res.body.username).to.equal(username);
             expect(res.body.fullName).to.equal(fullName);

@@ -6,10 +6,16 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const {TripPost} = require('./models');
-
+// const { JWT_SECRET } = require('./config')
 const jsonParser = bodyParser.json();
 
+const passport = require('passport')
+// const jwtAuth = passport.authenticate('jwt', {session: false});
+
+// const jwt = require('jwt-simple');
+
 const app = express.Router();
+
 
 
 // // Do I need to add this to my get router?

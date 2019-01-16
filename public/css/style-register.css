@@ -68,6 +68,10 @@ input, .sign-up-btn {
     display: block;
 }
 
+#js-confirm-password {
+    margin-bottom: 10px;
+}
+
 input[type=text], input[type=password] {
     padding: 15px;
     margin: 5px 0 22px 0;

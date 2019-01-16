@@ -68,15 +68,23 @@ p {
     font-size: 16px;
     text-align: center;
     margin: 0;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 30px;
     text-align: center;
+    /* new add */
+    color: white;
+    background: #04E474;
+    margin: 0;
+    padding: 10px;
 }
 
 #about-us, #coming-soon-tile {
-    padding: 5px;
+    /* border-bottom: solid black 1px; */
+    /* padding: 5px; */
+    margin: 0;
 }
 
 #we-are {
@@ -110,6 +118,7 @@ h2 {
 h3 {
     display: block;
 }
+
 
 .first {
     background: url("../images/air-freight.png");
@@ -224,7 +233,6 @@ h3 {
     }
     
     #what-we-do-container {
-        border-bottom: dotted black;
         padding-bottom: 20px;
     }
     /************************************************/  

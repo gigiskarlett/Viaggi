@@ -3,9 +3,10 @@
 <p>Created by a like-minded travel enthusiast, Viaggi is a radically helpful app that organizes all of your travel plans in one place, and counts down the days for you until your next adventure!<p>
   
 <h2>Demo</h2>
-<a href="https://viagi.herokuapp.com/>Live Demo</a>
+<a href="https://viagi.herokuapp.com"/>Live Demo</a>
   
 <h2>Screenshots</h2>
+
 <h3> Landing Page:</h3>
 
 ![image](https://user-images.githubusercontent.com/38567356/51298424-55d30080-19d9-11e9-9ed3-34de6c3ccc94.png)

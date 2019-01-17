@@ -270,9 +270,10 @@ nav a {
     display: table-cell;
 }
 
-.clockdiv div > span{
-    background: turquoise;
+.clockdiv div > span {
+    background: rgb(0, 191, 166);
     display: inline-block;
+    border-radius: 3px;
     color: white;
     font-size: 25px;
     padding: 10px;
@@ -352,7 +353,6 @@ nav a {
         left: 35%;
         top: 30%;
     }
-    
 
     .submit-button, .cancel-button, .edit-submit-button {
         margin-top: 5px;
@@ -375,8 +375,6 @@ nav a {
         margin-bottom: 20px;
     }
 
-
-
     legend {
         padding: 10px;
     }
@@ -387,41 +385,22 @@ nav a {
 
     /* trips on dashboard */
 
-    #date-container {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: inherit;
-    }
-
-    #destination-title {
-        font-size: 30px;
-    }
-
     .trip-section {
         padding: 10px;
-        border-radius: 5px;
         width: 70%;
-        margin: auto;
-        margin-bottom: 30px;
     }
 
     /* countdown clock */
 
 
     .clockdiv{
-        font-family: sans-serif;
-        color: #fff;
         display: block;
-        text-align: center;
-        font-size: 30px;
         margin: 10px 0 10px 0;
     }
 
     .clockdiv > div{
         padding: 10px;
-        border-radius: 3px;
         display: inline-block;
-        background: black;
     }
 
     .clockdiv div > span{

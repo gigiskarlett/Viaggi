@@ -372,13 +372,11 @@ function deleteEntry(delTripID) {
   .catch(error => console.log('Bad request'));
 }
 
-//it signs users out
-function signOutUser() {
-  $('.js-sign-out-link').on('click', function(event) {
-    event.preventDefault();
-   clearAuth()
-  })
-}
+//it logout users out
+$('.js-sign-out-link').on('click', function(event) {
+  event.preventDefault();
+  clearAuth()
+})
 
 function clearAuth(){
   localStorage.setItem("authToken", "");

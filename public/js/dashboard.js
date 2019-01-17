@@ -144,7 +144,7 @@ function renderTrip(trip){
   let newStartingDate= startingDate.toString().split(" ");
   let startingFinalString= newStartingDate[0]+" "+newStartingDate[1]+" "+newStartingDate[2]+" "+newStartingDate[3];
 
-  let endingDate= new Date(trip.when);
+  let endingDate= new Date(trip.lastDayOfTrip);
   let newEndingDate= endingDate.toString().split(" ");
   let endingFinalString= newEndingDate[0]+" "+newEndingDate[1]+" "+newEndingDate[2]+" "+newEndingDate[3];
 
@@ -199,10 +199,6 @@ function renderTrip(trip){
 
  </div>
  `
-}
-
-function convertDate() {
-
 }
 
 // Creates trip section and adds the clock //
@@ -395,14 +391,8 @@ function clearAuth(){
 
 //gets remaining time to date
 function getTimeRemaining(startTime) {
-  console.log(startTime)
 
-
-  let now = new Date()
-
-   // TODO add hours for timezone to now.  
-
-  let t = new Date(startTime) - now;
+  let t = Date.parse(startTime) - Date.parse(new Date());
 
   return {
     total: t,
@@ -415,7 +405,8 @@ function getTimeRemaining(startTime) {
 
 //initializes clock
 function initializeClock(trip) {
-
+  let startTime = new Date(Date.parse(new Date(trip.when)))  
+  
   let clock = $(`#${trip.id}`).find(".clockdiv");
   let daysSpan = clock.find('.days');
   let hoursSpan = clock.find('.hours');
@@ -423,7 +414,8 @@ function initializeClock(trip) {
   let secondsSpan = clock.find('.seconds');
 
   function updateClock() {
-    var t = getTimeRemaining(trip.when);
+
+    var t = getTimeRemaining(startTime);
 
     daysSpan.html(t.days);
     hoursSpan.html(('0' + t.hours).slice(-2));

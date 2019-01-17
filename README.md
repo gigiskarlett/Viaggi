@@ -7,9 +7,9 @@
   
 <h2>Screenshots</h2>
 
-<h3> Landing Page:</h3>
+<h3> Landing Page</h3>
 
-![image](https://user-images.githubusercontent.com/38567356/51298424-55d30080-19d9-11e9-9ed3-34de6c3ccc94.png)
+![image](https://user-images.githubusercontent.com/38567356/51301504-50c77e80-19e4-11e9-8e5d-bb5b786d9e87.png)
 
 <h3> Register Page</h3>
 

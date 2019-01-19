@@ -228,7 +228,6 @@ function submitNewTrip() {
     newTrip.when = $('.when').val();
     newTrip.lastDayOfTrip = $('.lastDayTrip').val();
     newTrip.tripDetails = $('#description-field').val();
-  
     postTrip(newTrip);
     hideModal();
   }); 
@@ -281,7 +280,6 @@ function getOneTrip(tripID) {
     })
     .then(responseJson => {
       clearTripModal();
-    
       populateEditModal(responseJson); 
     })
     .catch(error => console.log('Bad request'));
@@ -327,7 +325,7 @@ function submitEditEntry(editedTrip, ) {
   headers: {
     'Accept': 'application/json',
     'Content-Type' : 'application/json',
-    //'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+    'Authorization': `Bearer ${state.token}`
   },
   method: "PUT",
   body: JSON.stringify(editedTrip)

@@ -5,8 +5,8 @@ mongoose.Promise = global.Promise;
 
 const tripPostSchema = mongoose.Schema({
     destination: {type: String, required: true},
-    when: {type: Date, required: true },
-    lastDayOfTrip: {type: Date, required: true},
+    when: {type: String, required: true },
+    lastDayOfTrip: {type: String, required: true},
     tripDetails: {type: String, required: true},
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 });

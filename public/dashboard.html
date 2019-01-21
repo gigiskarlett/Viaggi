@@ -44,7 +44,7 @@
 
 
             <div class="container"> 
-                <div class="js-trips-container">
+                <div class="js-trips-container" aria-live="polite">
                     <section class="js-trips"></section>
                 </div>
             </div>
@@ -76,6 +76,8 @@
 
                         <label for="tripDetails">Trip Details</label>
                         <textarea id="description-field" placeholder="Write details about your trip..." name="tripDetails" rows="4" required > </textarea>
+
+                        <p class="js-error-message error-message"></p>
                         
                         <button type="submit" class="edit-submit-button js-edit-submit-button" hidden>EDIT TRIP</button>
                         <button type="submit" class="submit-button js-submit-button">ADD TRIP</button>

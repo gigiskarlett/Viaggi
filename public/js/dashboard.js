@@ -72,6 +72,7 @@ function openEntryModal() {
     $('.js-submit-button').show()
     $('.container').addClass('opaque');
     $('.js-modal-container').show();
+    $(".js-error-message").empty();
   });
 }
 
@@ -124,7 +125,7 @@ function fetchTrips(callback) {
     renderAllTrips(responseJson)
   }) 
   .catch(err => {
-    $('.js-error-message').html("Whoops! We currently don't have anything available for your search. Please try another search.")
+    console.log("Whoops! Try this again.")
   })
 }
 
@@ -218,12 +219,17 @@ function submitNewTrip() {
   $('.js-entry-modal').on('submit', function(event){
     event.preventDefault();
     let newTrip = {};
-    newTrip.destination = $('.entry-input').val();
-    newTrip.when = $('.when').val();
-    newTrip.lastDayOfTrip = $('.lastDayTrip').val();
-    newTrip.tripDetails = $('#description-field').val();
-    postTrip(newTrip);
-    hideModal();
+    newTrip.destination = $('.entry-input').val().trim();
+    newTrip.when = $('.when').val().trim();
+    newTrip.lastDayOfTrip = $('.lastDayTrip').val().trim();
+    newTrip.tripDetails = $('#description-field').val().trim();
+    if(newTrip.destination != "" && newTrip.when != "" && newTrip.lastDayOfTrip != "" && newTrip.tripDetails != "") {
+      postTrip(newTrip);
+      hideModal();
+    }
+    else{
+      $(".js-error-message").append(`Please fill out all the fields`);
+    }
   }); 
 }
 
@@ -295,6 +301,7 @@ function openModal() {
   $('.js-submit-button').hide();
   $('.js-edit-submit-button').show();
   $('.js-modal-container').show();
+  $(".js-error-message").empty();
 }
 
 //listens for when user submits edit

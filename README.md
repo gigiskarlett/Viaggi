@@ -34,6 +34,6 @@
 <p>Jquery</p>
 <p>Node.js</p>
 <p>Express.js</p>
-<p>MonoDB</p>
+<p>MongoDB</p>
 <p>Integration tests using Chai and Mocha</p>
 <p>Continuous integration utilizing Travis CI</p>

@@ -26,8 +26,6 @@ function getAuthToken(){
   }
 }
 
-
-
 function refreshToken() {
   fetch('/api/auth/refresh',
       {   
@@ -53,8 +51,6 @@ function refreshToken() {
           console.log(err)
       });
   }
-  
-
 
 //// Nav toggle for mobile ////
 
@@ -141,12 +137,12 @@ function firstTripInstructions() {
 
 function renderTrip(trip){
   let startingDate= new Date(trip.when);
-  let newStartingDate= startingDate.toString().split(" ");
-  let startingFinalString= newStartingDate[0]+" "+newStartingDate[1]+" "+newStartingDate[2]+" "+newStartingDate[3];
+  let newStartingDate= startingDate.toUTCString().split(" ");
+  let startingFinalString= newStartingDate[0]+" "+newStartingDate[2]+" "+newStartingDate[1]+" "+newStartingDate[3];
 
   let endingDate= new Date(trip.lastDayOfTrip);
   let newEndingDate= endingDate.toString().split(" ");
-  let endingFinalString= newEndingDate[0]+" "+newEndingDate[1]+" "+newEndingDate[2]+" "+newEndingDate[3];
+  let endingFinalString= newEndingDate[0]+" "+newEndingDate[2]+" "+newEndingDate[1]+" "+newEndingDate[3];
 
  return ` <div class='js-trip-section trip-section' id='${trip.id}'>
 
@@ -215,9 +211,7 @@ function renderAllTrips(responseJson) {
   }
 }
 
-
 ////     New trip POST    ////
-
 
 //listens for submit of new trip
 function submitNewTrip() {
@@ -352,7 +346,6 @@ function getIdToDelEntry()  {
 //deletes trip entry
 function deleteEntry(delTripID) {
   fetch(`/api/trips/${delTripID}`,
-
   {
     headers: {
       'Accept': 'application/json',
@@ -411,7 +404,7 @@ function initializeClock(trip) {
 
   function updateClock() {
 
-    var t = getTimeRemaining(startTime);
+    var t = getTimeRemaining(startTime); 
 
     daysSpan.html(t.days);
     hoursSpan.html(('0' + t.hours).slice(-2));

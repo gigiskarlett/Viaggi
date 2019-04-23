@@ -41,6 +41,14 @@ app.use('/api/trips', tripsRouter);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
+//unprotected endpoint that links to personal portfolio to make app load faster 
+//if accessed from portfolio
+app.get('/api/pingAServer', (req, res) => {
+  return res.json({
+    data: 'yea'
+  });
+});
+
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 app.use('*', (req, res) => {

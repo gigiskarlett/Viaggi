@@ -147,7 +147,7 @@ function renderTrip(trip) {
     newStartingDate[3];
 
   let endingDate = new Date(trip.lastDayOfTrip);
-  let newEndingDate = endingDate.toString().split(" ");
+  let newEndingDate = endingDate.toUTCString().split(" ");
   let endingFinalString =
     newEndingDate[0] +
     " " +
